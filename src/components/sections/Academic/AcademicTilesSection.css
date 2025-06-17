@@ -1,0 +1,138 @@
+.academic-tiles-section {
+  padding: 5px 25px;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-family: var(--secondary-font-family);
+  color: var(--special-text);
+}
+
+.tiles-grid {
+  display: grid;
+  grid-template-areas:
+    "nova nova"
+    "hka ost";
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+  max-width: 1000px;
+  margin: auto;
+  cursor: pointer;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-color: var(--nav-bg);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+}
+
+.tile-link:hover {
+  text-decoration: none;
+}
+
+.tile:hover {
+  transform: scale(1.05);
+}
+
+.tile-image {
+  display: flex;
+  width: 100%;
+  height: 180px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: white;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.tile-content {
+  color: var(--primary-color);
+  padding: 20px;
+  text-align: left;
+}
+
+.tile-content h3 {
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+}
+
+.tile-content p {
+  margin: 0 0 5px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.tile-content span {
+  font-size: 0.85rem;
+  color: #ddd;
+}
+
+/* Grid area assignment */
+.tile-large {
+  grid-area: nova;
+}
+
+.tile-medium {
+  grid-area: hka;
+}
+
+.tile-small {
+  grid-area: ost;
+}
+
+/* Tile meta info*/
+
+.tile-content__meta-info {
+  margin-left: 1px;
+}
+
+/* Meta Info here please*/
+.tile-content__meta-info  {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem; /* or more, e.g., 1.5rem */
+}
+
+.tile-content__meta-info  span {
+    color: var(--primary-clr);
+    font-size: 0.75rem;
+    padding: 5px 10px;
+    border-radius: 30px;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background: rgba(5, 5, 5, 0.3);
+    border: 1px solid rgba(5, 5, 5, 0.7);
+    font-weight: 500;
+    transition: 0.5s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tiles-grid {
+    grid-template-areas:
+      "nova"
+      "hka"
+      "ost";
+    grid-template-columns: 1fr;
+  }
+
+  .tile:hover {
+    transform: scale(1.02);
+  }
+}

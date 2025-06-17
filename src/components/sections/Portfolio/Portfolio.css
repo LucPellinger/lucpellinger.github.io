@@ -1,0 +1,200 @@
+.portfolio {
+	width: 100%;
+	padding: 60px 0;
+}
+
+.portfolio__grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.portfolio__card {
+	position: relative;
+	max-height: 400px;
+	overflow: hidden;
+	border-radius: 20px;
+	transition: all 0.5s ease;
+	opacity: 0;
+	transform: translateY(20px);
+	animation: fadeInUp 0.6s ease forwards;
+	animation-delay: calc(var(--i) * 0.1s);
+	cursor: pointer;
+	border: 2px solid var(--special-text); /* 👈 add this */
+}
+
+@keyframes fadeInUp {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+/* Skill Badges */
+
+.portfolio__categories {
+	position: absolute;
+	bottom: 20px;
+	left: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	z-index: 2;
+	opacity: 0;
+	transition: opacity 0.5s ease;
+}
+
+.portfolio__card:hover .portfolio__categories {
+	opacity: 1;
+	z-index: 4;
+
+}
+
+.portfolio__categories span {
+	color: var(--primary-clr);
+	font-size: 0.75rem;
+	padding: 4px 12px;
+    border: 1px solid rgba(139, 76, 181, 0.5);
+	border-radius: 30px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+    background: rgba(139, 76, 181, 0.3);
+	opacity: 0;
+	animation: fadeInBadge 0.4s ease forwards;
+	animation-delay: calc(var(--i) * 0.2s);
+}
+
+@keyframes fadeInBadge {
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.portfolio__card::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.4);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.portfolio__card:hover::before {
+	opacity: 1;
+}
+
+/* Container handles hover state globally */
+.portfolio__grid:hover .portfolio__card {
+	filter: blur(3px) grayscale(60%);
+	transform: scale(0.98);
+	transition: all 0.3s ease;
+	pointer-events: none;
+	
+}
+
+/* Focused (hovered) card regains clarity */
+.portfolio__card-wrapper:hover .portfolio__card {
+	filter: none;
+	transform: scale(1.02);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+	pointer-events: auto;
+	z-index: 2;
+}
+
+
+
+.portfolio__card-title {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	top: 50%;
+	transform: translateX(-50%);
+	color: var(--accent-clr);
+	font-size: 22px;
+	font-weight: bold;
+	width: 100%;
+	text-align: center;
+	opacity: 0;
+	background-color: rgba(0, 0, 0, 0.7);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	transition: opacity 0.5s ease;
+	opacity: 0;
+	z-index: 1;
+}
+
+.portfolio__card-title h3 {
+	margin: 0;
+	padding: 0;
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-bottom: 20%;
+	color: var(--accent-clr);
+}
+
+.portfolio__card:hover .portfolio__card-title {
+	opacity: 1;
+	z-index: 3;
+	
+}
+
+.portfolio__card img {
+	object-fit: cover;
+	object-position: top;
+	width: 100%;
+	max-height: 300px;
+}
+
+/* Responsive Grid */
+@media (max-width: 991px) {
+	.portfolio__grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 767px) {
+	.portfolio__grid {
+		grid-template-columns: repeat(1, 1fr);
+	}
+
+	.portfolio__card::before {
+		opacity: 1; /* always show the overlay background */
+	}
+
+	.portfolio__card-title,
+	.portfolio__categories,
+	.portfolio__categories span,
+	.portfolio__card-info {
+		opacity: 1 !important; /* force visibility */
+		z-index: 2;
+	}
+
+	.portfolio__card-title {
+		background-color: rgba(0, 0, 0, 0.7);
+	}
+
+	.portfolio__categories {
+		margin-bottom: 5%;
+	}
+
+	.portfolio__card-title h3 {
+		margin-bottom: 15%;
+	}
+
+	.portfolio__card:hover::before {
+		opacity: 1; /* keep this for consistency */
+	}
+
+	.portfolio__grid:hover .portfolio__card {
+		filter: none !important;
+		transform: none !important;
+		pointer-events: auto !important;
+	}
+}

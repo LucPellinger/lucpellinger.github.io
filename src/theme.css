@@ -1,0 +1,177 @@
+/* themes.css */
+@import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&family=Special+Elite&display=swap');
+
+
+
+/* Base Theme */
+:root {
+	--background-color: #f8f9fa; /* #f8f9fa (white); #D8BFD8 (Thistle), #FFF0F5 (Lavender Blush);*/
+	--text-color: #333;
+	/*--primary-font-family: 'Poppins', sans-serif; */
+	/*--secondary-font-family: 'Cormorant Garamond', serif; */
+	--primary-font-family: 'Cutive Mono', monospace; /* For main content */
+	--secondary-font-family: 'Special Elite', cursive; /* For special titles */	
+	--nav-bg: #9E7BB5; /* #f8f9fa (white), #D8BFD8 (Thistle), #FFF0F5 (Lavender Blush); #9E7BB5 (Heather Purple); */
+	--special-text: #000;
+	--box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.6);
+	--circle-border: rgba(0, 0, 0, 0.25);
+	--nav_button-bg: #9E7BB5;
+	--footer-hover-color: #fff; /* Color for footer icons */
+}
+
+/* Dark Theme */
+.dark-theme {
+	--background-color: #392A48; /* #2a2c39 (Blue Grey),  #392A48 (Matte Purple); #301934 (Dark Purple);*/
+	--text-color: #D8BFD8; /* #858792 (Grey), #D8BFD8 (Thistle), */
+	--nav-bg: #252734; /* #252734 (Dark Blue Grey), #392A48 (Matte Purple); #301934 (Dark Purple);*/
+	--special-text: #fff; /* #fff (white), #D8BFD8 (Thistle), #FFF0F5 (Lavender Blush); #795F80 (Faded Purple); */
+	--box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.6);
+	--circle-border: rgba(255, 255, 255, 0.25);
+	--nav_button-bg: #D8BFD8;
+	--footer-hover-color: #9E7BB5;
+}
+
+* {
+	text-decoration: none;
+}
+html {
+	scroll-behavior: smooth !important;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: var(--primary-font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+	transition: background-color 0.3s ease, color 0.3s ease;
+	overflow-x: hidden;
+	box-sizing: border-box;
+}
+
+.container {
+	max-width: 1060px;
+	margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	color: var(--text-color);
+}
+
+p {
+	margin-bottom: 1em;
+	line-height: 1.6;
+	font-size: 16px;
+}
+
+/* Link Styles */
+a {
+	color: var(--primary-color);
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+section {
+	margin: 0 auto;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+/* Highlighting */
+.highlight {
+	color: var(--secondary-color);
+	font-weight: bold;
+}
+
+/* Button Styles */
+.button {
+	background-color: var(--nav-bg);
+	color: var(--text-color);
+	border: 1px solid var(--text-color); /* before #3b3d49 */
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+	border-radius: 30px;
+	height: 60px;
+	width: 150px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.button:hover {
+	background-color: var(--special-text); /* before --secondary-color, now --special-text*/
+	color: var(--background-color); /* before white, now Indigo #4B0082 */
+	text-decoration: none;
+}
+
+/* Responsive Typography */
+@media screen and (min-width: 600px) {
+	h1 {
+		font-size: 2rem;
+	}
+
+	h2 {
+		font-size: 1.6rem;
+	}
+
+	h3 {
+		font-size: 1.4rem;
+	}
+
+	h4 {
+		font-size: 1.2rem;
+	}
+
+	h5 {
+		font-size: 1.1rem;
+	}
+
+	h6 {
+		font-size: 1rem;
+	}
+
+	p {
+		font-size: 1rem;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	h1 {
+		font-size: 1.8rem;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	h3 {
+		font-size: 1.3rem;
+	}
+
+	h4 {
+		font-size: 1.1rem;
+	}
+
+	h5 {
+		font-size: 1rem;
+	}
+
+	h6 {
+		font-size: 0.9rem;
+	}
+
+	p {
+		font-size: 0.9rem;
+	}
+}

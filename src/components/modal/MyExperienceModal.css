@@ -1,0 +1,89 @@
+/* myExperienceModal.css */
+
+.exp-modal-overlay {
+	position: fixed;
+	inset: 0;
+	background-color: rgba(0, 0, 0, 0.4);
+	backdrop-filter: blur(4px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+	padding: 1rem;
+	box-sizing: border-box;
+}
+
+.exp-modal-content {
+	background-color: #732ea7;
+	color: white;
+	padding: 2rem 1.5rem;
+	border-radius: 1.25rem;
+	width: 100%;
+	max-width: 550px;
+	position: relative;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+	text-align: center;
+	font-family: var(--primary-font-family);
+}
+
+.exp-modal-close-btn {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: transparent;
+	border: none;
+	color: white;
+	font-size: 1.5rem;
+	cursor: pointer;
+}
+
+.exp-modal-logo {
+	width: 80px;
+	height: auto;
+	margin-bottom: 1rem;
+	object-fit: contain;
+}
+
+.exp-modal-title {
+	font-size: 1.75rem;
+	font-weight: bold;
+	margin-bottom: 0.5rem;
+}
+
+.exp-modal-subtitle {
+	font-size: 1.2rem;
+	margin-bottom: 0.25rem;
+	font-weight: 500;
+}
+
+.exp-modal-period {
+	font-size: 1rem;
+	margin-bottom: 1rem;
+	font-style: italic;
+	opacity: 0.9;
+}
+
+.exp-modal-description {
+	text-align: left;
+	font-size: 0.95rem;
+	line-height: 1.6;
+	margin-top: 1rem;
+}
+
+.exp-modal-description p {
+	margin-bottom: 0.75rem;
+}
+
+/* Mobile tweaks */
+@media screen and (max-width: 600px) {
+	.exp-modal-content {
+		padding: 1.5rem 1rem;
+		border-radius: 1rem;
+	}
+	.exp-modal-title {
+		font-size: 1.5rem;
+	}
+	.exp-modal-subtitle {
+		font-size: 1rem;
+	}
+}
