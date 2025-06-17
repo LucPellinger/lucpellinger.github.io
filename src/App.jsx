@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+///import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MyHeader from './components/header/MyHeader';
 import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home';
@@ -21,19 +21,10 @@ function App() {
 					<MyExperienceModal experience={selectedExperience} onClose={() => setSelectedExperience(null)} />
 				)}
 				<MyHeader onResumeClick={() => setShowCVModal(true)} />
-				<Router>
-					<Routes>
-						<Route 
-							path='/' 
-							element={
-								<Home 	
-									onResumeClick={() => setShowCVModal(true)}
-									onExperienceClick={(experience) => setSelectedExperience(experience)}
-								/>
-							} 
-						/>
-					</Routes>
-				</Router>
+				<Home 	
+					onResumeClick={() => setShowCVModal(true)}
+					onExperienceClick={(experience) => setSelectedExperience(experience)}
+				/>
 				<Footer />
 			</ThemeProvider>
 		</div>
