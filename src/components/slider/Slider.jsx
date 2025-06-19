@@ -1,122 +1,109 @@
-import React, { useEffect, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import "swiper/swiper-bundle.css";
-import "./Slider.css"
-import { func } from "prop-types";
-import { slidesData } from "../../utils/Data"; // Assuming you have a slidesData.js file with the slide data
+import "./Slider.css";
+import { slidesData } from "../../utils/Data";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
-
 export default function Slider() {
-    const swiperWrapperRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const swiperRef = useRef(null);
 
-    const formatDate = (dateStr) =>
-        new Date(dateStr).toLocaleString('default', { month: 'short', year: 'numeric' });
+  const formatDate = (dateStr) =>
+    new Date(dateStr).toLocaleString("default", { month: "short", year: "numeric" });
 
-    function adjustMargin() {
-        const screenWidth = window.innerWidth;
+  const handleSlideChange = (swiper) => {
+    setActiveIndex(swiper.activeIndex);
+    swiper.updateSlides();
+    swiper.updateProgress();
+    swiper.updateSize();
+  };
 
-        if (swiperWrapperRef.current) {
-            swiperWrapperRef.current.style.marginLeft =
-            screenWidth <= 520
-            ? "0px"
-            : screenWidth <= 650
-            ? "-50px"
-            : screenWidth <= 800
-            ? "-100px"
-            : "-150px";
-        }
-    }
-
-    useEffect(() => {
-        adjustMargin();
-        window.addEventListener("resize", adjustMargin);
-        return () => {
-            window.removeEventListener("resize", adjustMargin);
-        };
-    }, []);
-
-    return (
-        <main>
-            <div className="slider__container">
-                <Swiper
-                  // install Swiper modules
-                    modules={[Pagination]}
-                    grabCursor
-                    initialSlide={0}
-                    centeredSlides={true}
-                    slidesPerView="auto"
-                    speed={800}
-                    slideToClickedSlide
-                    pagination={{ clickable: true }}
-                    breakpoints={{
-                        320: {spaceBetween: 40},
-                        650: {spaceBetween: 30},
-                        1000: {spaceBetween: 20},
-                    }}
-                    onSwiper={(swiper) => {
-                        swiperWrapperRef.current = swiper.wrapperEl;
-                    }}
-                >
-                    {slidesData.map((slide, index) => (
-                        <SwiperSlide key={index}>
-                            <img src={slide.imgSrc} alt={slide.title} />
-                            <div className="slider__title">
-                                <h1>{slide.title}</h1>
-                                <h2>{slide.company}</h2>
-                                <div className="slider__meta-info">
-                                    <span>
-                                        <FaCalendarAlt style={{ marginRight: '7px' }} />
-                                        {formatDate(slide.date_from)} – {formatDate(slide.date_to)}
-                                    </span>
-                                    <span>
-                                        <FaLocationDot style={{ marginRight: '6px' }} />
-                                        {slide.location}
-                                    </span>
-                                </div>
-                            </div>
-                            <div className="slider__content">
-                                <div className="slider__text-box">
-                                    <h1>{slide.company}</h1>
-                                    <h2>{slide.title}</h2>
-                                    <div className="slider__meta-info">
-                                        <span>
-                                            <FaCalendarAlt style={{ marginRight: '7px' }} />
-                                            {formatDate(slide.date_from)} – {formatDate(slide.date_to)}
-                                        </span>
-                                        <span>
-                                            <FaLocationDot style={{ marginRight: '6px' }} />
-                                            {slide.location}
-                                        </span>
-                                    </div>
-                                    <p>{slide.description}</p>
-                                </div>
-                                <div className="slider__footer">
-                                    <div className="slider__categories">
-                                        {slide.categories.map((category, idx) => (
-                                            <span key={idx} style={{"--i": idx + 1}}>
-                                                {category}
-                                            </span>
-                                        ))}
-                                    </div>
-                                    {/*
-                                    <button className="button">
-                                        <span className="slider__button-text">More..</span>
-                                    </button>
-                                    */}
-                                </div>
-
-                            </div>
-                        </SwiperSlide>
-                    )
-                )}
-                </Swiper>
-            </div>
-        </main>
-
-    );
-};
+  return (
+    <main>
+      <div className="slider__container">
+        <Swiper
+          modules={[Pagination]}
+          grabCursor
+          centeredSlides={true}
+          slidesPerView="auto"
+          spaceBetween={20}
+          slideToClickedSlide
+          speed={800}
+          pagination={{ clickable: true }}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          onSlideChange={handleSlideChange}
+          breakpoints={{
+            400: { slidesPerView: 1, spaceBetween: 15 },
+            600: { slidesPerView: 1.1, spaceBetween: 30 },
+            768: { slidesPerView: 1.5, spaceBetween: 40 },
+            991: { slidesPerView: 1.8, spaceBetween: 50 },
+          }}
+        >
+          {slidesData.map((slide, index) => {
+            const width = activeIndex === index ? "90" : "70";
+            return (
+              <SwiperSlide
+                key={index}
+                style={{
+                  width: `${width}vwpx`,
+                  transition: "width 0.4s ease",
+                }}
+              >
+                <img src={slide.imgSrc} alt={slide.title} />
+                <div className="slider__title">
+                  <h1>{slide.title}</h1>
+                  <h2>{slide.company}</h2>
+                  <div className="slider__meta-info">
+                    <span>
+                      <FaCalendarAlt style={{ marginRight: "7px" }} />
+                      {formatDate(slide.date_from)} – {formatDate(slide.date_to)}
+                    </span>
+                    <span>
+                      <FaLocationDot style={{ marginRight: "6px" }} />
+                      {slide.location}
+                    </span>
+                  </div>
+                </div>
+                <div className="slider__content">
+                  <div className="slider__text-box">
+                    {/* ✅ NEW inner wrapper */}
+                    <div className="slider__text-content">
+                      <h1>{slide.company}</h1>
+                      <h2>{slide.title}</h2>
+                      <div className="slider__meta-info">
+                        <span>
+                          <FaCalendarAlt style={{ marginRight: "7px" }} />
+                          {formatDate(slide.date_from)} – {formatDate(slide.date_to)}
+                        </span>
+                        <span>
+                          <FaLocationDot style={{ marginRight: "6px" }} />
+                          {slide.location}
+                        </span>
+                      </div>
+                      <p>{slide.description}</p>
+                    </div>
+                  </div>
+                  <div className="slider__footer">
+                    <div className="slider__categories">
+                      {slide.categories.map((category, idx) => (
+                        <span key={idx} style={{ "--i": idx + 1 }}>
+                          {category}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </SwiperSlide>
+            );
+          })}
+        </Swiper>
+      </div>
+    </main>
+  );
+}
