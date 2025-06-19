@@ -49,7 +49,7 @@ function MyModal({ onClose }) {
                 {/*<embed src="/resume.pdf" width="100%" height="600px" type="application/pdf" />*/}
                 {isMobile ? (
                     <a
-                        href="/resume.pdf"
+                        href="public/resume.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="resume-modal"
@@ -59,13 +59,13 @@ function MyModal({ onClose }) {
                     </a>
                 ) : (
                     <object
-                        data="/resume.pdf"
+                        data="public/resume.pdf"
                         type="application/pdf"
                         className="pdf-viewer"
                     >
                         <p>
                             Your browser doesn’t support PDFs. Please download it here:{" "}
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                            <a href="public/resume.pdf" target="_blank" rel="noopener noreferrer">
                                 Download PDF
                             </a>
                         </p>

@@ -40,7 +40,7 @@
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
-	z-index: 2;
+	z-index: 3;
 	opacity: 0;
 	transition: opacity 0.5s ease;
 }
@@ -64,6 +64,7 @@
 	opacity: 0;
 	animation: fadeInBadge 0.4s ease forwards;
 	animation-delay: calc(var(--i) * 0.2s);
+	z-index: 2;
 }
 
 @keyframes fadeInBadge {
@@ -73,6 +74,7 @@
 	}
 }
 
+/*
 .portfolio__card::before {
 	content: '';
 	position: absolute;
@@ -88,6 +90,7 @@
 .portfolio__card:hover::before {
 	opacity: 1;
 }
+*/
 
 /* Container handles hover state globally */
 .portfolio__grid:hover .portfolio__card {
@@ -107,7 +110,23 @@
 	z-index: 2;
 }
 
+.portfolio__card-overlay {
+  position: absolute;
 
+  bottom: 0;
+  width: 100%;
+  height: 50%; /* covers bottom half only */
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1; /* ✅ sits behind title & badges */
+  justify-content: flex-start;
+}
+
+.portfolio__card:hover .portfolio__card-overlay {
+  opacity: 1;
+  z-index: 2;
+}
 
 .portfolio__card-title {
 	position: absolute;
@@ -121,13 +140,15 @@
 	width: 100%;
 	text-align: center;
 	opacity: 0;
-	background-color: rgba(0, 0, 0, 0.7);
+	background-color: transparent;
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
+	text-wrap: wrap;
+	padding: 20px;
 	align-items: center;
 	transition: opacity 0.5s ease;
 	opacity: 0;
-	z-index: 1;
+	z-index: 3;
 }
 
 .portfolio__card-title h3 {
@@ -135,13 +156,14 @@
 	padding: 0;
 	font-size: 1.5rem;
 	font-weight: bold;
-	margin-bottom: 20%;
+	margin-bottom: 10rem;
 	color: var(--accent-clr);
+	z-index: 4;
 }
 
 .portfolio__card:hover .portfolio__card-title {
 	opacity: 1;
-	z-index: 3;
+	z-index: 4;
 	
 }
 
@@ -176,16 +198,17 @@
 		z-index: 2;
 	}
 
-	.portfolio__card-title {
-		background-color: rgba(0, 0, 0, 0.7);
-	}
+  .portfolio__card-overlay {
+    opacity: 1 !important;
+	height: 100%; /* covers bottom half only */
+	background-color: rgba(0, 0, 0, 0.6);
+  }
 
-	.portfolio__categories {
-		margin-bottom: 5%;
-	}
+
 
 	.portfolio__card-title h3 {
-		margin-bottom: 15%;
+		font-size: 7;
+		margin-bottom: 8.5rem;
 	}
 
 	.portfolio__card:hover::before {
