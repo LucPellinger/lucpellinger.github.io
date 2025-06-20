@@ -72,7 +72,7 @@ const Home = ( { onResumeClick, onExperienceClick } ) => {
 		});
 	};
 	return (
-		<div className='container home'>
+		<div className='container home' id='home'>
 			<Hero onResumeClick={onResumeClick} />
 
 			<div className='hero-section__scroll-down'>
@@ -122,7 +122,7 @@ const Home = ( { onResumeClick, onExperienceClick } ) => {
 		    <section className='skill' id='languageskills' ref={skillRef}>
 		      <div className='skill__left'>
 		        <h2 className='section__title'>My Language Skills</h2>
-		        <a href='/resume.pdf' download='resume.pdf' className='button'>
+		        <a href='public/resume.pdf' download='public/resume.pdf' className='button'>
 		          Get Resume
 		        </a>
 		      </div>

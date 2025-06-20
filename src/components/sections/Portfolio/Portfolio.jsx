@@ -17,6 +17,9 @@ const Portfolio = () => {
 						{/* This allows for more flexibility in styling and interaction */}
 						<div className='portfolio__card'>
 							<img src={item.src} alt={item.alt} />
+							<div className="portfolio__card-overlay">
+
+							
 							<div className='portfolio__card-title'><h3>{item.title}</h3></div>
 							<div className="portfolio__categories">
                             	    {item.categories.map((category, idx) => (
@@ -25,6 +28,8 @@ const Portfolio = () => {
                             	        </span>
                             	    ))}
                             </div>
+
+							</div>
 						</div>
 					</div>
 					</a>

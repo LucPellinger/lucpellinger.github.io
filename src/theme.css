@@ -66,7 +66,7 @@ h6 {
 }
 
 p {
-	margin-bottom: 1em;
+	margin-top: 1em;
 	line-height: 1.6;
 	font-size: 16px;
 }
@@ -86,6 +86,8 @@ section {
 	margin: 0 auto;
 	margin-top: 30px;
 	margin-bottom: 30px;
+	margin-left: 8px;
+	margin-right: 8px;
 }
 
 /* Highlighting */
@@ -116,7 +118,7 @@ section {
 }
 
 /* Responsive Typography */
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 1200px) {
 	h1 {
 		font-size: 2rem;
 	}
@@ -146,7 +148,7 @@ section {
 	}
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
 	h1 {
 		font-size: 1.8rem;
 	}
@@ -173,5 +175,37 @@ section {
 
 	p {
 		font-size: 0.9rem;
+	}
+}
+
+
+
+@media screen and (max-width: 400px) {
+	h1 {
+		font-size: 1.2rem;
+	}
+
+	h2 {
+		font-size: 0.9rem;
+	}
+
+	h3 {
+		font-size: 0.8rem;
+	}
+
+	h4 {
+		font-size: 1.1rem;
+	}
+
+	h5 {
+		font-size: 1rem;
+	}
+
+	h6 {
+		font-size: 0.9rem;
+	}
+
+	p {
+		font-size: 0.7rem;
 	}
 }

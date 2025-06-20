@@ -9,6 +9,7 @@
 	z-index: 9999;
 	padding: 1rem; /* prevents modal from touching edges */
 	box-sizing: border-box;
+	overflow: hidden;
 }
 
 .modal-content {
@@ -16,12 +17,33 @@
 	color: white;
 	padding: 2.5rem 2rem;
 	border-radius: 1.5rem;
-	width: 100%;
-	max-width: 500px;
+  	width: 50vw;      /* fixed to 80% of viewport width */
+  	height: 80vh;     /* fixed to 80% of viewport height */
 	text-align: center;
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 	font-family: var(--primary-font-family);
+}
+
+.pdf-container {
+  width: 100%;
+  height: 100%;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: hidden; /* or auto for scrolling */
+  margin-bottom: 10px;
+}
+
+.pdf-container embed,
+.pdf-container object {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: auto;
+  overflow: hidden;
 }
 
 .modal-close-btn {
@@ -53,8 +75,9 @@
 		padding: 2rem 1.2rem;
 		font-size: 0.95rem;
 		border-radius: 1rem;
-		width: 100%;
-		max-width: 300px;
+		width: 90vw;
+		height: auto;
+		max-height: 90vh;
 	}
 
 }
