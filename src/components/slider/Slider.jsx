@@ -29,7 +29,7 @@ export default function Slider() {
           modules={[Pagination]}
           grabCursor
           centeredSlides={true}
-          slidesPerView="auto"
+          //slidesPerView="auto"
           spaceBetween={20}
           slideToClickedSlide
           speed={800}
@@ -39,21 +39,20 @@ export default function Slider() {
           }}
           onSlideChange={handleSlideChange}
           breakpoints={{
-            400: { slidesPerView: 1, spaceBetween: 15 },
+            0: { slidesPerView: 0.7, spaceBetween: 20 },
+            400: { slidesPerView: 0.9, spaceBetween: 20 },
             600: { slidesPerView: 1.1, spaceBetween: 30 },
-            768: { slidesPerView: 1.5, spaceBetween: 40 },
-            991: { slidesPerView: 1.8, spaceBetween: 50 },
+            800: { slidesPerView: 1.4, spaceBetween: 40 },
+            991: { slidesPerView: 1.5, spaceBetween: 50 },
           }}
+          slidesSizesGrid={[70, 80, 90, 100, 110]}
         >
           {slidesData.map((slide, index) => {
             const width = activeIndex === index ? "90" : "70";
             return (
               <SwiperSlide
                 key={index}
-                style={{
-                  width: `${width}vwpx`,
-                  transition: "width 0.4s ease",
-                }}
+
               >
                 <img src={slide.imgSrc} alt={slide.title} />
                 <div className="slider__title">
