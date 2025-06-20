@@ -7,7 +7,7 @@ import './Hero.css';
 
 const Hero = ({ onResumeClick }) => (
 
-                <section className='hero-section' id='home'>                    
+                <section className='hero-section' id='hero'>                    
                     <div className='hero-section__left'>
                         <div className='hero-section__special-text'>
                             Hello! I am <br /> Luc

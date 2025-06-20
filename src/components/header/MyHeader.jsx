@@ -15,7 +15,7 @@ const MyHeader = ( { onResumeClick }) => {
 		<div className={`nav ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
 			{/* BLOCK ELEMENT MODIFIER */}
 			<div className='nav__wrapper container'>
-				<div className='nav__logo' onClick={() => window.location.reload()}>
+				<div className='nav__logo' onClick={() => { window.location.href = '/'; }}>
 					<img src='public/Logo.png' alt='Logo' className='nav__logo-image' />
   					<span className='nav__logo-text'>Luc Marcel Pellinger</span>
 				</div>

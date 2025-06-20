@@ -72,7 +72,7 @@ const Home = ( { onResumeClick, onExperienceClick } ) => {
 		});
 	};
 	return (
-		<div className='container home'>
+		<div className='container home' id='home'>
 			<Hero onResumeClick={onResumeClick} />
 
 			<div className='hero-section__scroll-down'>

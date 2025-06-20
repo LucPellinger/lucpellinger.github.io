@@ -27,6 +27,16 @@ function MyModal({ onClose }) {
         };
     }, [onClose]);
 
+    // Prevent background scroll while modal is open
+    useEffect(() => {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }, []);    
+
     return (
         <div
             ref={modalRef}
@@ -41,16 +51,25 @@ function MyModal({ onClose }) {
                 >
                     <X />
                 </button>
+
                 <h1 className="text-3xl font-extrabold text-center mb-4">View my Resume</h1>
+
                 <p className="text-lg font-medium text-center mb-6">
                     If you want to get more information about me, dm me via LinkedIn!
                 </p>
-                {/*<iframe src="/resume.pdf" width="100%" height="600px"></iframe>*/}
-                {/*<embed src="/resume.pdf" width="100%" height="600px" type="application/pdf" />*/}
+
+                {/*// ignore this block */}
+                {/*<iframe src="/resume.pdf" width="100%" height="600px"></iframe>
+                <embed src="public/resume.pdf" width="100%" height="2rem" type="application/pdf" />
+                <div className="pdf-container">
+                  <embed src="public/resume.pdf" type="application/pdf" />
+                </div>*/}
+
+                {/*// Conditional rendering based on device type*/}
                 {isMobile ? (
                     <a
                         href="public/resume.pdf"
-                        target="_blank"
+                        target="public/resume.pdf"
                         rel="noopener noreferrer"
                         className="resume-modal"
                     >
@@ -61,12 +80,15 @@ function MyModal({ onClose }) {
                     <object
                         data="public/resume.pdf"
                         type="application/pdf"
-                        className="pdf-viewer"
+                        className="pdf-container"
                     >
                         <p>
-                            Your browser doesn’t support PDFs. Please download it here:{" "}
+                            Your browser doesn’t support PDF preview.
                             <a href="public/resume.pdf" target="_blank" rel="noopener noreferrer">
-                                Download PDF
+                                <br />
+                                <Download />
+                                <br />
+                                Download Resume here
                             </a>
                         </p>
                     </object>
