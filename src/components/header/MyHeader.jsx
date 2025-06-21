@@ -3,6 +3,7 @@ import './MyHeader.css';
 import { useTheme } from '../../context/useTheme';
 import { useState } from 'react';
 import MyModal from '../modal/MyModal';
+import Logo from '../../assets/header/Logo.png';
 
 const MyHeader = ( { onResumeClick }) => {
 	const { isDarkTheme, toggleTheme } = useTheme();
@@ -16,7 +17,7 @@ const MyHeader = ( { onResumeClick }) => {
 			{/* BLOCK ELEMENT MODIFIER */}
 			<div className='nav__wrapper container'>
 				<div className='nav__logo' onClick={() => { window.location.href = '/'; }}>
-					<img src='public/Logo.png' alt='Logo' className='nav__logo-image' />
+					<img src={Logo} alt='Logo' className='nav__logo-image' />
   					<span className='nav__logo-text'>Luc Marcel Pellinger</span>
 				</div>
 				<ul className={`nav__menu ${isMobileMenuOpen ? 'mobile-menu' : ''}`}>

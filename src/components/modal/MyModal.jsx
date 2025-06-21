@@ -68,8 +68,8 @@ function MyModal({ onClose }) {
                 {/*// Conditional rendering based on device type*/}
                 {isMobile ? (
                     <a
-                        href="public/resume.pdf"
-                        target="public/resume.pdf"
+                        href="/resume.pdf"
+                        target="/resume.pdf"
                         rel="noopener noreferrer"
                         className="resume-modal"
                     >
@@ -78,13 +78,13 @@ function MyModal({ onClose }) {
                     </a>
                 ) : (
                     <object
-                        data="public/resume.pdf"
+                        data="/resume.pdf"
                         type="application/pdf"
                         className="pdf-container"
                     >
                         <p>
                             Your browser doesn’t support PDF preview.
-                            <a href="public/resume.pdf" target="_blank" rel="noopener noreferrer">
+                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
                                 <br />
                                 <Download />
                                 <br />
