@@ -67,7 +67,6 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	
 }
 
 @media screen and (max-width: 600px) {
@@ -76,7 +75,7 @@
 		font-size: 0.95rem;
 		border-radius: 1rem;
 		width: 90vw;
-		height: auto;
+		
 		max-height: 90vh;
 	}
 
