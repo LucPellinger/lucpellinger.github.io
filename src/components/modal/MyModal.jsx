@@ -77,20 +77,22 @@ function MyModal({ onClose }) {
                         Open PDF
                     </a>
                 ) : (
-                    <object
-                        data="/resume.pdf"
-                        type="application/pdf"
+                    <object data="/luc-portfolio/resume.pdf" type="application/pdf" className="pdf-container">
+                      <iframe
+                        src="/resume.pdf"
                         className="pdf-container"
-                    >
+                        title="PDF Preview"
+                      >
                         <p>
-                            Your browser doesn’t support PDF preview.
-                            <a href="/resume.pdf" download target="_blank" rel="noopener noreferrer">
-                                <br />
-                                <Download />
-                                <br />
-                                Download Resume here
-                            </a>
+                          Your browser doesn’t support PDF preview.
+                          <a href="/resume.pdf" download>
+                            <br />
+                            <Download />
+                            <br />
+                            Download Resume here
+                          </a>
                         </p>
+                      </iframe>
                     </object>
                 )}
                 
