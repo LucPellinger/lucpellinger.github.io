@@ -122,7 +122,7 @@ const Home = ( { onResumeClick, onExperienceClick } ) => {
 		    <section className='skill' id='languageskills' ref={skillRef}>
 		      <div className='skill__left'>
 		        <h2 className='section__title'>My Language Skills</h2>
-		        <a href='/luc-portfolio/Resume_LucPellinger.pdf' download className='button'>
+		        <a href='/Resume_LucPellinger.pdf' download className='button'>
 		          Get Resume
 		        </a>
 		      </div>
