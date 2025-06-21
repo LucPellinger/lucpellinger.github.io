@@ -4,7 +4,7 @@ import './MyModal.css';
 
 function MyModal({ onClose }) {
     const modalRef = useRef();
-    const isMobile = window.innerWidth < 768;
+    const isMobile = window.innerWidth < 400;
 
     // Close on background click
     const handleClickOutside = (e) => {
@@ -59,38 +59,35 @@ function MyModal({ onClose }) {
                 </p>
 
                 {/*// ignore this block */}
-                {/*<iframe src="/resume.pdf" width="100%" height="600px"></iframe>
-                <embed src="public/resume.pdf" width="100%" height="2rem" type="application/pdf" />
+                {/*<iframe src="/Resume_LucPellinger.pdf" width="100%" height="600px"></iframe>
+                <embed src="public/Resume_LucPellinger.pdf" width="100%" height="2rem" type="application/pdf" />
                 <div className="pdf-container">
-                  <embed src="public/resume.pdf" type="application/pdf" />
+                  <embed src="public/Resume_LucPellinger.pdf" type="application/pdf" />
                 </div>*/}
 
                 {/*// Conditional rendering based on device type*/}
                 {isMobile ? (
                     <a
-                        href="public/resume.pdf"
-                        target="public/resume.pdf"
+                        href="/luc-portfolio/Resume_LucPellinger.pdf"
+                        target="/luc-portfolio/Resume_LucPellinger.pdf"
                         rel="noopener noreferrer"
-                        className="resume-modal"
+                        className="pdf-container"
                     >
                         <Download />
                         Open PDF
                     </a>
                 ) : (
-                    <object
-                        data="public/resume.pdf"
-                        type="application/pdf"
-                        className="pdf-container"
-                    >
+                    <object data="/luc-portfolio/Resume_LucPellinger.pdf" type="application/pdf" className="pdf-container">
                         <p>
-                            Your browser doesn’t support PDF preview.
-                            <a href="public/resume.pdf" target="_blank" rel="noopener noreferrer">
-                                <br />
-                                <Download />
-                                <br />
-                                Download Resume here
-                            </a>
+                          Your browser doesn’t support PDF preview.
+                          <a href="/luc-portfolio/Resume_LucPellinger.pdf" download>
+                            <br />
+                            <Download />
+                            <br />
+                            Download Resume here
+                          </a>
                         </p>
+                      
                     </object>
                 )}
                 

@@ -7,9 +7,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "postbuild": "cp public/CNAME dist/CNAME",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "predeploy": "yarn run build",
+    "predeploy": "yarn run build && cp public/CNAME dist/CNAME",
     "deploy": "gh-pages -d dist -b gh-pages"
   },
   "dependencies": {
