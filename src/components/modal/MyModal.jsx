@@ -84,7 +84,7 @@ function MyModal({ onClose }) {
                     >
                         <p>
                             Your browser doesn’t support PDF preview.
-                            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">
+                            <a href="/resume.pdf" download target="_blank" rel="noopener noreferrer">
                                 <br />
                                 <Download />
                                 <br />
