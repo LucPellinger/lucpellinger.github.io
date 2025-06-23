@@ -83,8 +83,8 @@ export const slidesData = [
 		imgSrc: PorscheImage_v2,
 		imgAlt: "Porsche Logo",
 		location: "Stuttgart, Germany",
-		date_from: "2023-05-01",
-		date_to: "2023-07-31",
+		date_from: "2024-07-01",
+		date_to: "2024-08-31",
 		total_months: 2,
 		details:
 			"...",
@@ -100,7 +100,7 @@ export const slidesData = [
 		imgAlt: "Porsche Banner",
 		location: "Stuttgart, Germany",
 		date_from: "2022-11-01",
-		date_to: "2023-04-30",
+		date_to: "2023-07-30",
 		total_months: 9,
 		details: 
 			"...",
