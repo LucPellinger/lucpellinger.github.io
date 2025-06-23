@@ -28,6 +28,18 @@
 	font-family: var(--primary-font-family);
 }
 
+.modal-content h1 {
+	font-size: 1.5rem;
+	margin-bottom: 0.9rem;
+	margin-top: 2rem;
+}
+
+.modal-content p {
+	font-size: 0.9rem;
+	margin-bottom: 1rem;
+	margin-top: 1rem;
+}
+
 .pdf-container {
   width: 100%;
   height: 100%;
@@ -69,14 +81,32 @@
 	align-items: center;
 }
 
+@media screen and (max-width: 800px) {
+	.modal-content {
+		padding: 2rem 1.2rem;
+		font-size: 0.95rem;
+		border-radius: 1rem;
+		width: 90vw;
+		max-height: 90vh;
+	}
+}
+
 @media screen and (max-width: 600px) {
 	.modal-content {
 		padding: 2rem 1.2rem;
 		font-size: 0.95rem;
 		border-radius: 1rem;
 		width: 90vw;
-		
 		max-height: 90vh;
 	}
+}
 
+@media screen and (max-width: 400px) {
+	.modal-content {
+		padding: 2rem 1.2rem;
+		font-size: 0.95rem;
+		border-radius: 1rem;
+		width: 90vw;
+		max-height: 90vh;
+	}
 }

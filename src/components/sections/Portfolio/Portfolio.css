@@ -22,7 +22,7 @@
 	animation: fadeInUp 0.6s ease forwards;
 	animation-delay: calc(var(--i) * 0.1s);
 	cursor: pointer;
-	border: 2px solid var(--special-text); /* 👈 add this */
+	/*border: 2px solid var(--special-text); /* 👈 add this */
 }
 
 @keyframes fadeInUp {

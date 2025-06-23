@@ -115,7 +115,7 @@ export const slidesData = [
 		imgSrc: DeloitteImage,
 		imgAlt: "Deloitte Banner",
 		location: "Munich, Germany",
-		date_from: "2022-03-01",
+		date_from: "2023-03-01",
 		date_to: "2023-08-31",
 		total_months: 6,
 		details: 
@@ -131,7 +131,7 @@ export const slidesData = [
 		imgSrc: ConceitoImage,
 		imgAlt: "conceito Banner",
 		location: "Stuttgart, Germany",
-		date_from: "2011-06-16",
+		date_from: "2021-06-16",
 		date_to: "2022-02-28",
 		total_months: 8,
 		details: 

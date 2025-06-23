@@ -75,7 +75,7 @@ main {
 .swiper-slide {
     position: relative;
     height: 500px;
-    background: var(--primary-clr);
+    /*background: var(--primary-clr);*/
     box-shadow: 1px 22px 44px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     overflow: hidden;
@@ -85,7 +85,7 @@ main {
 
 .swiper-slide-active {
     transition: width 1s ease-in-out;
-    border: 3px solid var(--primary-clr);
+    /*border: 3px solid var(--primary-clr); /* var(--primary-clr) */
     z-index: 9999;
 }
 

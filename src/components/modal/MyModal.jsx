@@ -73,8 +73,11 @@ function MyModal({ onClose }) {
                         rel="noopener noreferrer"
                         className="pdf-container"
                     >
+                        <br />
                         <Download />
-                        Open PDF
+                        <br />
+                        <p>Open Resume</p>
+                        <br />
                     </a>
                 ) : (
                     <object data="/Resume_LucPellinger.pdf" type="application/pdf" className="pdf-container">
@@ -84,7 +87,8 @@ function MyModal({ onClose }) {
                             <br />
                             <Download />
                             <br />
-                            Download Resume here
+                            <p>Download Resume here</p>
+                            <br />
                           </a>
                         </p>
                       

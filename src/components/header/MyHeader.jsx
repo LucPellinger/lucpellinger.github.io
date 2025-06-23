@@ -3,7 +3,7 @@ import './MyHeader.css';
 import { useTheme } from '../../context/useTheme';
 import { useState } from 'react';
 import MyModal from '../modal/MyModal';
-import Logo from '../../assets/header/Logo.png';
+import Logo from '../../assets/header/Logo_new.png';
 
 const MyHeader = ( { onResumeClick }) => {
 	const { isDarkTheme, toggleTheme } = useTheme();
