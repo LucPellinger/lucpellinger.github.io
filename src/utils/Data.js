@@ -155,7 +155,7 @@ export const portfolioItems = [
 		src: PersonalWebsite, 
 		alt: 'personal website', 
 		title: 'Personal Website',
-		url: '',
+		url: 'https://github.com/LucPellinger/lucpellinger.github.io',
 		categories: ["React.js", "CSS", "Java Script"],
 	},
 	{ 	
@@ -179,7 +179,7 @@ export const portfolioItems = [
 		src: compTSC, 
 		alt: 'TSC portfolio', 
 		title: 'Time Series Classification', 
-		url: '',
+		url: 'https://github.com/LucPellinger/Time-Series-Classification',
 		categories: ["PyTorch Lightning", "Polars", "Optuna"],
 	},
 	{ 
