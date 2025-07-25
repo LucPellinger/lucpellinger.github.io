@@ -77,11 +77,11 @@ export default function Slider() {
                       <h2>{slide.title}</h2>
                       <div className="slider__meta-info">
                         <span>
-                          <FaCalendarAlt style={{ marginRight: "7px" }} />
+                          <FaCalendarAlt style={{ marginRight: "8px" }} />
                           {formatDate(slide.date_from)} – {formatDate(slide.date_to)}
                         </span>
                         <span>
-                          <FaLocationDot style={{ marginRight: "6px" }} />
+                          <FaLocationDot style={{ marginRight: "8px" }} />
                           {slide.location}
                         </span>
                       </div>
