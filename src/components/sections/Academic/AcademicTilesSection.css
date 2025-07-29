@@ -1,6 +1,8 @@
 .academic-tiles-section {
-  padding: 5px 25px;
+
   text-align: center;
+  width: 100%;
+  margin: auto;
 }
 
 .section-title {
