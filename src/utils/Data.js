@@ -216,7 +216,7 @@ export const academicData = [
   {
     id: 2,
     title: "B.Sc. International IT Business",
-    subtitle: "Hochschule Karlsruhe",
+    subtitle: "Hochschule Karlsruhe – University of Applied Sciences (HKA)",
     location: "Karlsruhe, Germany",
     size: "medium",
     image: HkaImg,
