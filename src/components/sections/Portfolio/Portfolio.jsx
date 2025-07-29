@@ -1,6 +1,6 @@
 import React from 'react';
 import './Portfolio.css';
-import { portfolioItems } from '../../../utils/Data'; // Assuming you have a Data.js file with portfolio items
+import { portfolioItems } from '../../../utils/Data';
 
 
 

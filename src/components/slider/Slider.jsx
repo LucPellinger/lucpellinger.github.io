@@ -71,7 +71,7 @@ export default function Slider() {
                 </div>
                 <div className="slider__content">
                   <div className="slider__text-box">
-                    {/* ✅ NEW inner wrapper */}
+                    {/* NEW inner wrapper */}
                     <div className="slider__text-content">
                       <h1>{slide.company}</h1>
                       <h2>{slide.title}</h2>

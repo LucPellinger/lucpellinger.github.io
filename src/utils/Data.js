@@ -19,7 +19,7 @@ import ConceitoImage from '../assets/Experience/conceito.png';
 // academics section images
 import OstImg from '../assets/Academics/ost.png';
 import NovaImg from '../assets/Academics/novasbe.png';
-import HkaImg from '../assets/Academics/hka_2.png';
+import HkaImg from '../assets/Academics/hka.png';
 
 
 export const cards = [
@@ -227,7 +227,7 @@ export const academicData = [
   {
     id: 3,
     title: "Exchange Semester",
-    subtitle: "OST - Eastern Switzerland University of Applied Sciences",
+    subtitle: "OST – Eastern Switzerland University of Applied Sciences",
     location: "Rapperswil-Jona, Switzerland",
     size: "small",
     image: OstImg,

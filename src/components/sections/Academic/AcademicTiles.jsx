@@ -3,7 +3,7 @@ import './AcademicTilesSection.css';
 
 import { FaLocationDot } from "react-icons/fa6";
 import { FaCalendarAlt } from "react-icons/fa";
-import { academicData } from '../../../utils/Data'; // Assuming you have a Data.js file with academic data
+import { academicData } from '../../../utils/Data';
 
 
 export default function AcademicTiles() {
