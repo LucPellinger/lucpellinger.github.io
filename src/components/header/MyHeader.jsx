@@ -1,6 +1,7 @@
 import Switch from 'react-switch';
 import './MyHeader.css';
 import { useTheme } from '../../context/useTheme';
+import ThemeToggleSwitch from '../switch/switch';
 import { useState } from 'react';
 import MyModal from '../modal/MyModal';
 import Logo from '../../assets/header/Logo_new.png';
@@ -40,7 +41,9 @@ const MyHeader = ( { onResumeClick }) => {
 						<a href='#contact'>Contact</a>
 					</li>*/}
 					<li className='buttons'>
-						<label htmlFor='' className='switch'>
+						<ThemeToggleSwitch isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
+
+						{/*<label htmlFor='' className='switch'>
 							<Switch
 								height={24}
 								width={48}
@@ -50,7 +53,7 @@ const MyHeader = ( { onResumeClick }) => {
 								checked={isDarkTheme}
 							/>
 						</label>
-						{/*<a onClick={ onResumeClick } className='nav_button'>
+						<a onClick={ onResumeClick } className='nav_button'>
 							View Resume
 						</a>*/}
 					</li>
