@@ -41,19 +41,20 @@ const MyHeader = ( { onResumeClick }) => {
 						<a href='#contact'>Contact</a>
 					</li>*/}
 					<li className='buttons'>
-						<ThemeToggleSwitch isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
+						
 
-						{/*<label htmlFor='' className='switch'>
-							<Switch
+						<label htmlFor='' className='switch'>
+							<ThemeToggleSwitch isDarkTheme={isDarkTheme} toggleTheme={toggleTheme} />
+							{/*<Switch
 								height={24}
 								width={48}
 								onColor='#4D4D4D'
 								offColor='#ccc'
 								onChange={toggleTheme}
 								checked={isDarkTheme}
-							/>
+							/>*/}
 						</label>
-						<a onClick={ onResumeClick } className='nav_button'>
+						{/*<a onClick={ onResumeClick } className='nav_button'>
 							View Resume
 						</a>*/}
 					</li>
