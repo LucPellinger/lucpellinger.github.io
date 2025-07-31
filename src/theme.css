@@ -17,6 +17,7 @@
 	--circle-border: rgba(0, 0, 0, 0.25);
 	--nav_button-bg: #9E7BB5;
 	--footer-hover-color: #fff; /* Color for footer icons */
+	--pagination-color: #1f1f1f;
 }
 
 /* Dark Theme */
@@ -29,6 +30,7 @@
 	--circle-border: rgba(255, 255, 255, 0.25);
 	--nav_button-bg: #D8BFD8;
 	--footer-hover-color: #9E7BB5;
+	--pagination-color: var(--primary-clr);
 }
 
 * {

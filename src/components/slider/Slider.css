@@ -322,7 +322,7 @@ main {
 .swiper-pagination-bullet {
     width: 16px;
     height: 16px;
-    background-color: var(--primary-clr);
+    background-color: var(--pagination-color); /* before: var(--primary-clr); */
     border-radius: 50%;
 }
 
