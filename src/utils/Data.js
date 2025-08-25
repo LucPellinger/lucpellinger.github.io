@@ -190,14 +190,14 @@ export const portfolioItems = [
 		url: 'https://github.com/novatechclub/BTC-Price-Prediction',
 		categories: ["Pandas", "Scikit-Learn", "PyTorch Lightning"],
 	},
-	{ 
-		id: 7,
-		src: RAGTest, 
-		alt: 'Local Rag test 7', 
-		title: 'Local RAG Test', 
-		url: 'https://huggingface.co/spaces/LucMarcelPellinger/Ollama_RAG_Agent/tree/main',
-		categories: ["Ollama", "LangChain", "smolagents"],
-	},
+	//{ 
+	//	id: 7,
+	//	src: RAGTest, 
+	//	alt: 'Local Rag test 7', 
+	//	title: 'Local RAG Test', 
+	//	url: 'https://huggingface.co/spaces/LucMarcelPellinger/Ollama_RAG_Agent/tree/main',
+	//	categories: ["Ollama", "LangChain", "smolagents"],
+	//},
 ];
 
 
