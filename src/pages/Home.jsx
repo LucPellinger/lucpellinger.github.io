@@ -13,6 +13,9 @@ import AcademicTiles from '../components/sections/Academic/AcademicTiles';
 import Contact from '../components/contact/Contact';
 import Card from '../components/card/Card';
 
+import GoogleGeminiEffect from "../components/gemini_effect/geminiEffect";
+import GoogleGeminiEffectDemo from "../components/gemini_effect/GoogleGeminiEffectDemo";
+
 
 const Home = ( { onResumeClick, onExperienceClick } ) => {
 	const skillRef = useRef(null);
@@ -75,14 +78,16 @@ const Home = ( { onResumeClick, onExperienceClick } ) => {
 		<div className='container home' id='home'>
 			<Hero onResumeClick={onResumeClick} />
 
-			<div className='hero-section__scroll-down'>
+			{/*<div className='hero-section__scroll-down'>
 			  <div className='tooltip'>
 			    <a href='#portfolio' className='scroll-down-link'>
 			      <FaChevronDown />
 			    </a>
 			    <span className='tooltip-text'>Scroll to Portfolio</span>
 			  </div>
-			</div>
+			</div>*/}
+
+			<GoogleGeminiEffectDemo />
 
 			<Portfolio />
 			
