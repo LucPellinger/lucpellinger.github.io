@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { X, Download } from 'lucide-react';
+import { FaLinkedin } from 'react-icons/fa';
+
 import './MyModal.css';
 
 function MyModal({ onClose }) {
@@ -54,9 +56,27 @@ function MyModal({ onClose }) {
 
                 <h1 className="text-3xl font-extrabold text-center mb-4">View my Resume</h1>
 
-                <p className="text-lg font-medium text-center mb-6">
-                    If you want to get more information about me, dm me via LinkedIn!
-                </p>
+                <div className="contact-row">
+                  <a
+                    href="https://www.linkedin.com/in/luc-pellinger/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="resume-box"
+                  >
+                    This resume was created using LaTeX. <br />
+                    If you want to get in touch, send me a DM.
+                  </a>
+
+                  <a
+                    href="https://www.linkedin.com/in/luc-pellinger/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Open LinkedIn"
+                    className="contact-icon"
+                  >
+                    <FaLinkedin />
+                  </a>
+                </div>
 
                 {/*// ignore this block */}
                 {/*<iframe src="/Resume_LucPellinger.pdf" width="100%" height="600px"></iframe>

@@ -12,6 +12,72 @@
 	overflow: hidden;
 }
 
+/* container for the pair */
+.contact-row {
+  display: flex;
+  align-items: center;       /* same baseline */
+  justify-content: center;   /* center as a unit */
+  gap: 1.25rem;              /* space between box and icon */
+  margin-bottom: 1.25rem;
+}
+
+/* pill box with same style as your hero circles */
+.resume-box {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+
+  padding: 0.9rem 1.2rem;
+  border-radius: 20px;               /* full pill */
+  /*border: 1px solid var(--special-text);*/
+  background-color: var(--nav-bg);     /* same fill as the circle */
+  color: var(--special-text);
+  font-size: 0.95rem;
+  line-height: 1.4;
+  text-decoration: none;               /* since it's an <a> */
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+
+.resume-box:hover {
+  background-color: var(--special-text);
+  color: var(--background-color);
+  border-color: var(--special-text);
+  text-decoration: none;  
+}
+
+/* circular icon button (matches Hero) */
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  /*border: 1px solid var(--special-text);*/
+  background-color: var(--nav-bg);
+  color: var(--special-text);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 32px;                     /* icon size */
+  flex-shrink: 0;
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+
+.contact-icon:hover {
+  background-color: var(--special-text);
+  color: var(--background-color);
+  border-color: var(--special-text);
+}
+
+/* unified hover effect: hover either element, both invert 
+.contact-row:hover .resume-box,
+.contact-row:hover .contact-icon {
+  background-color: var(--special-text);
+  color: var(--background-color);
+  border-color: var(--special-text);
+}*/
+
 .modal-content {
 	background-color: #732ea7;
 	color: white;
@@ -101,12 +167,25 @@
 	}
 }
 
+
+
 @media screen and (max-width: 400px) {
 	.modal-content {
 		padding: 2rem 1.2rem;
 		font-size: 0.95rem;
 		border-radius: 1rem;
 		width: 90vw;
-		max-height: 90vh;
+		max-height: 70vh;
 	}
+
+	.contact-row {
+  	  flex-direction: column;
+  	  gap: 0.75rem;
+  	}
+  	.resume-box {
+  	  text-align: left;
+  	}
+  	.resume-box::after {
+  	  display: none;
+  	}
 }
