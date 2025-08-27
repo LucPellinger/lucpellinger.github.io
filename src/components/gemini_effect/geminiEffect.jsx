@@ -4,6 +4,8 @@ import "./geminiEffect.css";
 import '../../pages/Home.css';
 import { FaChevronDown } from 'react-icons/fa';
 
+// inspired by https://ui.aceternity.com/components/google-gemini-effect
+
 const transition = { duration: 0, ease: "linear" };
 
 const D = [
