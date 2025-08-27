@@ -78,16 +78,16 @@ const Home = ( { onResumeClick, onExperienceClick } ) => {
 		<div className='container home' id='home'>
 			<Hero onResumeClick={onResumeClick} />
 
-			{/*<div className='hero-section__scroll-down'>
+			<div className='hero-section__scroll-down'>
 			  <div className='tooltip'>
 			    <a href='#portfolio' className='scroll-down-link'>
 			      <FaChevronDown />
 			    </a>
 			    <span className='tooltip-text'>Scroll to Portfolio</span>
 			  </div>
-			</div>*/}
+			</div>
 
-			<GoogleGeminiEffectDemo />
+			{/*<GoogleGeminiEffectDemo />*/}
 
 			<Portfolio />
 			
