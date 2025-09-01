@@ -6,7 +6,7 @@ import FlightDataAnalysis from '../assets/Portfolio/FlightDataAnalysis.png';
 import PersonalWebsite from '../assets/Portfolio/PersonalWebsite.png';
 import BitCoinPrice from '../assets/Portfolio/BitCoinPrice.png';
 import WineDataAnalysis from '../assets/Portfolio/WineDataAnalysis.png';
-import compTSC from '../assets/Portfolio/compTSC.png';
+import compTSC from '../assets/Portfolio/thesis_time_series.jpeg';
 import BloodCells from '../assets/Portfolio/BloodCells.png';
 import RAGTest from '../assets/Portfolio/RAGTest.png';
 
