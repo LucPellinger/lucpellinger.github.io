@@ -9,7 +9,7 @@ import WineDataAnalysis from '../assets/Portfolio/WineDataAnalysis.png';
 import compTSC from '../assets/Portfolio/thesis_time_series.jpeg';
 import BloodCells from '../assets/Portfolio/BloodCells.png';
 import RAGTest from '../assets/Portfolio/RAGTest.png';
-import DataEngineeringChallenge from '../assets/Portfolio/DataEngineeringChallenge.png';
+import DataEngineeringChallenge from '../assets/Portfolio/DataEngineeringChallenge_v2.png';
 
 // experience section images
 import PorscheImage_v1 from '../assets/Experience/porsche_v1.png';
