@@ -77,7 +77,7 @@ export const languages = [
 export const slidesData = [
 	{
 		id: 1,
-		title: "AI Engineering Working Student",
+		title: "Summer Internship AI Engineering",
 		company: "Dr. Ing. h.c. F. Porsche AG",
 		description: 
 			"Worked on AI engineering tasks focused on improving automated machine learning workflows and model evaluation. Contributed to the development of tools supporting robust and efficient ML experimentation.",
