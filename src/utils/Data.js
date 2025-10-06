@@ -9,6 +9,7 @@ import WineDataAnalysis from '../assets/Portfolio/WineDataAnalysis.png';
 import compTSC from '../assets/Portfolio/thesis_time_series.jpeg';
 import BloodCells from '../assets/Portfolio/BloodCells.png';
 import RAGTest from '../assets/Portfolio/RAGTest.png';
+import DataEngineeringChallenge from '../assets/Portfolio/DataEngineeringChallenge.png';
 
 // experience section images
 import PorscheImage_v1 from '../assets/Experience/porsche_v1.png';
@@ -190,8 +191,16 @@ export const portfolioItems = [
 		url: 'https://github.com/novatechclub/BTC-Price-Prediction',
 		categories: ["Pandas", "Scikit-Learn", "PyTorch Lightning"],
 	},
+	{ 
+		id: 7,
+		src: DataEngineeringChallenge, 
+		alt: 'Data-Engineering-Challenge', 
+		title: 'Data-Engineering-Challenge', 
+		url: 'https://github.com/LucPellinger/data-engineering-challenge',
+		categories: ["Polars", "Docker", "PostgreSQL"],
+	},
 	//{ 
-	//	id: 7,
+	//	id: 8,
 	//	src: RAGTest, 
 	//	alt: 'Local Rag test 7', 
 	//	title: 'Local RAG Test', 
