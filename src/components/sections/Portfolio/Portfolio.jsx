@@ -16,7 +16,7 @@ const Portfolio = () => {
 					{/* Using a div instead of an anchor tag for the card wrapper */}
 						{/* This allows for more flexibility in styling and interaction */}
 						<div className='portfolio__card'>
-							<img src={item.src} alt={item.alt} />
+							<img src={item.src} alt={item.alt} loading="lazy" />
 							<div className="portfolio__card-overlay">
 
 							

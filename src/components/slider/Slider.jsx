@@ -51,7 +51,7 @@ export default function Slider() {
                 key={index}
 
               >
-                <img src={slide.imgSrc} alt={slide.title} />
+                <img src={slide.imgSrc} alt={slide.title} loading="lazy" />
                 <div className="slider__title">
                   <h1>{slide.title}</h1>
                   <h2>{slide.company}</h2>

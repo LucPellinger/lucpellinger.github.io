@@ -2,7 +2,7 @@
 import React from 'react';
 import { FaDiscord, FaGithub, FaLinkedin, FaPlay,FaChevronDown } from 'react-icons/fa';
 import hfLogo from '../../../assets/Hero/hf-logo.svg';
-import HeroImg from '../../../assets/Hero/dev_2.png';
+import HeroImg from '../../../assets/Hero/dev_2.webp';
 import './Hero.css';
 
 const Hero = ({ onResumeClick }) => (

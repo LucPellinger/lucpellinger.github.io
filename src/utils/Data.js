@@ -2,25 +2,25 @@ import { RiStackLine } from 'react-icons/ri';
 import { FaCode } from 'react-icons/fa';
 
 // portfolio section images
-import FlightDataAnalysis from '../assets/Portfolio/FlightDataAnalysis.png';
-import PersonalWebsite from '../assets/Portfolio/PersonalWebsite.png';
-import BitCoinPrice from '../assets/Portfolio/BitCoinPrice.png';
-import WineDataAnalysis from '../assets/Portfolio/WineDataAnalysis.png';
-import compTSC from '../assets/Portfolio/thesis_time_series.jpeg';
-import BloodCells from '../assets/Portfolio/BloodCells.png';
-import RAGTest from '../assets/Portfolio/RAGTest.png';
-import DataEngineeringChallenge from '../assets/Portfolio/DataEngineeringChallenge_v2.png';
+import FlightDataAnalysis from '../assets/Portfolio/FlightDataAnalysis.webp';
+import PersonalWebsite from '../assets/Portfolio/PersonalWebsite.webp';
+import BitCoinPrice from '../assets/Portfolio/BitCoinPrice.webp';
+import WineDataAnalysis from '../assets/Portfolio/WineDataAnalysis.webp';
+import compTSC from '../assets/Portfolio/thesis_time_series.webp';
+import BloodCells from '../assets/Portfolio/BloodCells.webp';
+import RAGTest from '../assets/Portfolio/RAGTest.webp';
+import DataEngineeringChallenge from '../assets/Portfolio/DataEngineeringChallenge_v2.webp';
 
 // experience section images
-import PorscheImage_v1 from '../assets/Experience/porsche_v1.png';
-import PorscheImage_v2 from '../assets/Experience/porsche_v2.png';
-import DeloitteImage from '../assets/Experience/deloitte.png';
-import ConceitoImage from '../assets/Experience/conceito.png';
+import PorscheImage_v1 from '../assets/Experience/porsche_v1.webp';
+import PorscheImage_v2 from '../assets/Experience/porsche_v2.webp';
+import DeloitteImage from '../assets/Experience/deloitte.webp';
+import ConceitoImage from '../assets/Experience/conceito.webp';
 
 // academics section images
-import OstImg from '../assets/Academics/ost.png';
-import NovaImg from '../assets/Academics/novasbe.png';
-import HkaImg from '../assets/Academics/hka.png';
+import OstImg from '../assets/Academics/ost.webp';
+import NovaImg from '../assets/Academics/novasbe.webp';
+import HkaImg from '../assets/Academics/hka.webp';
 
 
 export const cards = [
