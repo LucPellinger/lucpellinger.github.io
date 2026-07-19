@@ -4,7 +4,7 @@ import { useTheme } from '../../context/useTheme';
 import ThemeToggleSwitch from '../switch/switch';
 import { useState } from 'react';
 import MyModal from '../modal/MyModal';
-import Logo from '../../assets/header/Logo_new.png';
+import Logo from '../../assets/Header/Logo_new.png';
 
 const MyHeader = () => {
 	const { isDarkTheme, toggleTheme } = useTheme();
