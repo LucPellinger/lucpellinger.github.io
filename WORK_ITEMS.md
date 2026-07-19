@@ -23,8 +23,8 @@ Development roadmap for lucpellinger.eu. Status: `[ ]` open · `[~]` in progress
 
 - [x] **TypeScript migration** — done in one pass: `tsconfig.json` (strict, `allowJs`), `typescript ^5.8` devDep (TS 7 breaks yarn's compat patch — stay on 5.x for now), `yarn typecheck` script (also runs in `predeploy`). `utils/Data.ts` exports typed models (`SkillCard`, `Slide`, `PortfolioItem`, `RoleType`, `AcademicItem`, `JourneyStop`, ...); all active components/pages/context are `.tsx`/`.ts` with prop interfaces (PropTypes removed). Test files stay `.jsx` (work via allowJs).
   - **Run `yarn install` locally once** — package.json/yarn.lock changed, `.pnp.cjs` must be regenerated.
-  - Open: ESLint still only lints `.js/.jsx` — adding `typescript-eslint` needs a decision (new tooling).
-  - Leftover dead code (couldn't delete from sandbox): `src/components/sections/Skills/`, `src/utils/ExperienceData.js` — delete manually.
+  - [x] `typescript-eslint ^8` added; `eslint.config.js` now lints `.ts/.tsx` (TS recommended + react-hooks/react-refresh).
+  - [x] Dead code removed: `src/components/sections/Skills/`, `src/utils/ExperienceData.js`.
 - [x] **3D globe journey** — built without three.js: canvas-2D orthographic dotted globe (`src/components/sections/GlobeJourney/`), lazy-loaded in its own chunk (~53KB gzip). Dotted land, DE/CH/PT highlighted denser + accent-colored, faint country borders, city pins with pulse, great-circle path, drag rotation, idle auto-spin, step chips + prev/next, auto-plays through the stops on first view. Toggle between Timeline and Globe views in the Journey section (`JourneySection.jsx`).
   - Chapter texts are lorem ipsum placeholders in `utils/Data.js` (`journeyStops[].chapter`) — **Luc fills in real wording** (Munich/Deloitte, Porsche Stuttgart-Zuffenhausen & Ludwigsburg, conceito Stuttgart, ...).
   - To highlight more countries: add the ISO numeric id in `scripts/generate-globe-data.mjs` and re-run it (needs `npm i --no-save world-atlas@2 topojson-client`).
