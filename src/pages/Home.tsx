@@ -9,6 +9,7 @@ import JourneySection from '../components/sections/Journey/JourneySection';
 import Experience from '../components/sections/Experience/Experience';
 import Education from '../components/sections/Academic/Education';
 import TechSkills from '../components/sections/TechSkills/TechSkills';
+import Badges from '../components/sections/Badges/Badges';
 import LanguageSkills from '../components/sections/LanguageSkills/LanguageSkills';
 
 /**
@@ -61,6 +62,12 @@ const Home = ({ onResumeClick }: { onResumeClick: () => void }) => (
 		</Band>
 
 		<Band>
+			<Reveal>
+				<Badges />
+			</Reveal>
+		</Band>
+
+		<Band alt>
 			<Reveal>
 				<LanguageSkills />
 			</Reveal>

@@ -3,6 +3,7 @@ import './GlobeJourney.css';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import globeData from '../../../utils/globeData.json';
 import { journeyStops } from '../../../utils/Data';
+import { formatPeriod } from '../../../utils/format';
 
 /**
  * Interactive dotted globe showing the journey stops.
@@ -386,6 +387,11 @@ const GlobeJourney = () => {
 					<p className='globe-journey__tooltip-region'>
 						{stop.region} ({stop.country})
 					</p>
+					{formatPeriod(stop.date_from, stop.date_to, stop.current) && (
+						<p className='globe-journey__tooltip-period'>
+							{formatPeriod(stop.date_from, stop.date_to, stop.current)}
+						</p>
+					)}
 						<p className='globe-journey__tooltip-text'>{stop.chapter ?? stop.note ?? ''}</p>
 					</div>
 				</div>

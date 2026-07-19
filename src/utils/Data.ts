@@ -51,6 +51,12 @@ export interface Slide {
 	total_months: number;
 	details: string;
 	categories: string[];
+	/* Experience modal content (optional — shown when present) */
+	logo?: string;
+	skills?: string[];
+	companyDescription?: string;
+	projectDescription?: string;
+	impact?: string;
 }
 
 /** Role tabs in the portfolio filter are derived from these values. */
@@ -98,6 +104,21 @@ export interface JourneyStop {
 	lon: number;
 	/** Story text shown in the globe tooltip and the timeline. */
 	chapter?: string;
+	/** Period lived there, as "YYYY-MM" (rendered as MM-YYYY). */
+	date_from?: string;
+	date_to?: string;
+}
+
+export interface Badge {
+	id: number;
+	title: string;
+	issuer: string;
+	/** "YYYY-MM" (rendered as MM-YYYY). */
+	date?: string;
+	/** Credential / verification link (Accredible, Snowflake, ...). */
+	url?: string;
+	/** Hosted badge image URL; a themed award icon is shown when absent. */
+	image?: string;
 }
 
 /* ---------- data ---------- */
@@ -169,6 +190,11 @@ export const slidesData: Slide[] = [
 		details:
 			"...",
 		categories: ["Data Science", "AI Engineering", "Automotive"],
+		logo: PorscheImage_v2,
+		skills: ["Python", "AutoML", "Model Evaluation", "ML Experimentation"],
+		companyDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
+		projectDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
+		impact: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
 	},
 	{
 		id: 2,
@@ -185,6 +211,11 @@ export const slidesData: Slide[] = [
 		details: 
 			"...",
 		categories: ["Research", "AI Engineering", "Automotive"],
+		logo: PorscheImage_v1,
+		skills: ["Python", "ML Research", "Data Pipelines", "Advisory"],
+		companyDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
+		projectDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
+		impact: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
 	},
 	{
 		id: 3,
@@ -201,6 +232,11 @@ export const slidesData: Slide[] = [
 		details: 
 			"...",
 		categories: ["Data Analytics", "Consulting", "Process Mining"],
+		logo: DeloitteImage,
+		skills: ["Process Mining", "Dashboards", "Analytics", "Consulting"],
+		companyDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
+		projectDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
+		impact: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
 	},
 	{
 		id: 4,
@@ -217,6 +253,11 @@ export const slidesData: Slide[] = [
 		details: 
 			"...",
 		categories: ["Data Analytics", "Consulting", "Compliance Analysis"],
+		logo: ConceitoImage,
+		skills: ["Data Management", "Compliance", "Client Communication"],
+		companyDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
+		projectDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
+		impact: "Lorem ipsum dolor sit amet, consectetur adipiscing elit — placeholder, replace with the real text.",
 	},
 ];
 
@@ -229,7 +270,7 @@ export const portfolioItems: PortfolioItem[] = [
 		title: 'Flight Data Analysis',
 		url: 'https://github.com/LucPellinger/Flight-Data-Analysis',
 		categories: ["Streamlit", "Folium & Pandas", "OpenAI API"],
-		roleTypes: ["Data Science", "AI Engineering"],
+		roleTypes: ["Analytics Engineering", "AI Engineering"],
 		stack: ["Python", "Pandas", "OpenAI API"],
 	},
 	{ 	
@@ -366,6 +407,8 @@ export const journeyStops: JourneyStop[] = [
     region: "Baden-Württemberg",
     country: "DE",
     note: "B.Sc. at HKA",
+    date_from: "2018-09",
+    date_to: "2023-08",
     lat: 49.01,
     lon: 8.4,
     chapter:
@@ -377,6 +420,8 @@ export const journeyStops: JourneyStop[] = [
     region: "St. Gallen",
     country: "CH",
     note: "Exchange semester at OST",
+    date_from: "2021-09",
+    date_to: "2022-02",
     lat: 47.23,
     lon: 8.82,
     chapter:
@@ -398,6 +443,8 @@ export const journeyStops: JourneyStop[] = [
     region: "Portugal",
     country: "PT",
     note: "M.Sc. at Nova SBE",
+    date_from: "2023-08",
+    date_to: "2025-01",
     lat: 38.72,
     lon: -9.14,
     chapter:
@@ -424,5 +471,30 @@ export const journeyStops: JourneyStop[] = [
     lon: 9.99,
     chapter:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamburg, the current home base — placeholder text, replace with the real chapter.",
+  },
+];
+
+export const badges: Badge[] = [
+  {
+    id: 1,
+    title: "Accredible Badge 1 — replace with the real badge name",
+    issuer: "Accredible",
+    date: "2025-01",
+    url: "https://www.credential.net/",
+    // image: "https://... (Accredible hosted badge image URL)",
+  },
+  {
+    id: 2,
+    title: "Accredible Badge 2 — replace with the real badge name",
+    issuer: "Accredible",
+    date: "2025-06",
+    url: "https://www.credential.net/",
+  },
+  {
+    id: 3,
+    title: "Snowflake Badge — replace with the real badge name",
+    issuer: "Snowflake",
+    date: "2026-01",
+    url: "https://achieve.snowflake.com/",
   },
 ];

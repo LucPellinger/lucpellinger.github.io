@@ -27,6 +27,7 @@ describe('Portfolio section', () => {
 describe('Portfolio filters', () => {
 	it('filters projects by role type tab', () => {
 		render(<Portfolio />);
+		fireEvent.click(screen.getByRole('button', { name: /^role/i }));
 		fireEvent.click(screen.getByRole('button', { name: 'Data Engineering' }));
 
 		for (const item of portfolioItems) {
@@ -40,6 +41,7 @@ describe('Portfolio filters', () => {
 
 	it('filters projects by stack chip', () => {
 		render(<Portfolio />);
+		fireEvent.click(screen.getByRole('button', { name: /^tech stack/i }));
 		fireEvent.click(screen.getByRole('button', { name: 'React' }));
 
 		for (const item of portfolioItems) {
@@ -53,6 +55,7 @@ describe('Portfolio filters', () => {
 
 	it('shows all projects again after selecting the All tab', () => {
 		render(<Portfolio />);
+		fireEvent.click(screen.getByRole('button', { name: /^role/i }));
 		fireEvent.click(screen.getByRole('button', { name: 'Data Engineering' }));
 		fireEvent.click(screen.getByRole('button', { name: 'All' }));
 
@@ -61,14 +64,31 @@ describe('Portfolio filters', () => {
 		}
 	});
 
-	it('shows an empty state with a working clear button for impossible combinations', () => {
+	it('shows an empty state with a working reset button for impossible combinations', () => {
 		render(<Portfolio />);
+		fireEvent.click(screen.getByRole('button', { name: /^role/i }));
 		fireEvent.click(screen.getByRole('button', { name: 'Data Engineering' }));
+		fireEvent.click(screen.getByRole('button', { name: /^tech stack/i }));
 		fireEvent.click(screen.getByRole('button', { name: 'React' }));
 
 		expect(screen.getByText(/no projects match/i)).toBeInTheDocument();
 
+		fireEvent.click(screen.getByRole('button', { name: /reset filters/i }));
+		for (const item of portfolioItems) {
+			expect(screen.getByText(item.title)).toBeInTheDocument();
+		}
+	});
+
+	it('shows a clear-filters button only when a filter is active', () => {
+		render(<Portfolio />);
+		expect(screen.queryByRole('button', { name: /clear filters/i })).not.toBeInTheDocument();
+
+		fireEvent.click(screen.getByRole('button', { name: /^tech stack/i }));
+		fireEvent.click(screen.getByRole('button', { name: 'Python' }));
+		expect(screen.getByRole('button', { name: /clear filters/i })).toBeInTheDocument();
+
 		fireEvent.click(screen.getByRole('button', { name: /clear filters/i }));
+		expect(screen.queryByRole('button', { name: /clear filters/i })).not.toBeInTheDocument();
 		for (const item of portfolioItems) {
 			expect(screen.getByText(item.title)).toBeInTheDocument();
 		}

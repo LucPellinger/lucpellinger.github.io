@@ -31,6 +31,14 @@ Development roadmap for lucpellinger.eu. Status: `[ ]` open · `[~]` in progress
   - Possible upgrade: three.js version with lighting/texture if the dotted look ever feels too plain; scrollytelling variant (sticky globe stepping per scroll) also an option.
 - [ ] **Contact section** — currently commented out in `Home.jsx`; finish or remove.
 
+## Content for Luc to fill in
+
+- [ ] Badges section (`sections/Badges`, data in `utils/Data.ts` → `badges`): replace the three placeholders with real Accredible/Snowflake badges — set `title`, `date`, credential `url`, and `image` (hosted badge image URL; themed award icon shows when absent). To remove the section entirely: delete the `<Band><Reveal><Badges /></Reveal></Band>` block in `Home.tsx`, the `sections/Badges/` folder, and the `badges` export.
+
+- [ ] Experience modal texts in `utils/Data.ts` (`slidesData`): `companyDescription`, `projectDescription`, `impact` are lorem placeholders; `skills` seeded from categories — extend; `logo` currently reuses the banner image — swap in real logo assets.
+- [ ] Journey dates: Karlsruhe/Rapperswil/Lisbon filled from academic data; add `date_from`/`date_to` (YYYY-MM) for Mittelhaardt, Munich, Porto, Hamburg.
+- [ ] Journey chapter texts still lorem (Munich → Deloitte, Porsche Zuffenhausen/Ludwigsburg, conceito Stuttgart, ...).
+
 ## Cleanup / debt
 
 - [ ] Remove unused `src/components/sections/Skills/` (not imported anywhere).

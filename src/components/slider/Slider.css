@@ -37,6 +37,31 @@ main {
     width: 100%;
 }
 
+/* Details button (opens the experience modal) */
+.slider__details-btn {
+    font-family: inherit;
+    font-size: 0.8rem;
+    padding: 7px 16px;
+    cursor: pointer;
+    border-radius: 16px;
+    border: 1px solid var(--primary-clr);
+    background: transparent;
+    color: var(--primary-clr);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 0.4rem;
+}
+
+.slider__details-btn:hover {
+    background-color: var(--accent-clr);
+    border-color: var(--accent-clr);
+    color: #fff;
+}
+
+.slider__details-btn:focus-visible {
+    outline: 2px solid var(--primary-clr);
+    outline-offset: 2px;
+}
+
 /* Meta Info */
 
 .slider__meta-info {

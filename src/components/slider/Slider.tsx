@@ -1,16 +1,18 @@
-import { useRef, type CSSProperties } from "react";
+import { useRef, useState, type CSSProperties } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperClass } from "swiper";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./Slider.css";
-import { slidesData } from "../../utils/Data";
+import { slidesData, type Slide } from "../../utils/Data";
+import MyExperienceModal from "../modal/MyExperienceModal";
 import { FaCalendarAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
 export default function Slider() {
   const swiperRef = useRef<SwiperClass | null>(null);
+  const [selectedExperience, setSelectedExperience] = useState<Slide | null>(null);
 
   const formatDate = (dateStr: string) =>
     new Date(dateStr).toLocaleString("default", { month: "long", year: "numeric" });
@@ -93,6 +95,13 @@ export default function Slider() {
                         </span>
                       ))}
                     </div>
+                    <button
+                      type="button"
+                      className="slider__details-btn"
+                      onClick={() => setSelectedExperience(slide)}
+                    >
+                      More details
+                    </button>
                   </div>
                 </div>
               </SwiperSlide>
@@ -100,6 +109,13 @@ export default function Slider() {
           })}
         </Swiper>
       </div>
+
+      {selectedExperience && (
+        <MyExperienceModal
+          experience={selectedExperience}
+          onClose={() => setSelectedExperience(null)}
+        />
+      )}
     </main>
   );
 }

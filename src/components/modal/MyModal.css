@@ -1,191 +1,196 @@
 .modal-overlay {
 	position: fixed;
 	inset: 0;
-	background-color: rgba(0, 0, 0, 0.4);
-	backdrop-filter: blur(4px);
+	background-color: rgba(0, 0, 0, 0.45);
+	backdrop-filter: blur(5px);
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	z-index: 9999;
-	padding: 1rem; /* prevents modal from touching edges */
+	padding: 1rem;
 	box-sizing: border-box;
-	overflow: hidden;
+	animation: modal-fade 0.25s ease;
 }
-
-/* container for the pair */
-.contact-row {
-  display: flex;
-  align-items: center;       /* same baseline */
-  justify-content: center;   /* center as a unit */
-  gap: 1.25rem;              /* space between box and icon */
-  margin-bottom: 1.25rem;
-}
-
-/* pill box with same style as your hero circles */
-.resume-box {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-align: left;
-
-  padding: 0.9rem 1.2rem;
-  border-radius: 20px;               /* full pill */
-  /*border: 1px solid var(--special-text);*/
-  background-color: var(--nav-bg);     /* same fill as the circle */
-  color: var(--special-text);
-  font-size: 0.95rem;
-  line-height: 1.4;
-  text-decoration: none;               /* since it's an <a> */
-  transition: background-color .3s, color .3s, border-color .3s;
-}
-
-.resume-box:hover {
-  background-color: var(--special-text);
-  color: var(--background-color);
-  border-color: var(--special-text);
-  text-decoration: none;  
-}
-
-/* circular icon button (matches Hero) */
-.contact-icon {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  /*border: 1px solid var(--special-text);*/
-  background-color: var(--nav-bg);
-  color: var(--special-text);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 32px;                     /* icon size */
-  flex-shrink: 0;
-  transition: background-color .3s, color .3s, border-color .3s;
-}
-
-.contact-icon:hover {
-  background-color: var(--special-text);
-  color: var(--background-color);
-  border-color: var(--special-text);
-}
-
-/* unified hover effect: hover either element, both invert 
-.contact-row:hover .resume-box,
-.contact-row:hover .contact-icon {
-  background-color: var(--special-text);
-  color: var(--background-color);
-  border-color: var(--special-text);
-}*/
 
 .modal-content {
-	background-color: #732ea7;
-	color: white;
-	padding: 2.5rem 2rem;
-	border-radius: 1.5rem;
-  	width: 50vw;      /* fixed to 80% of viewport width */
-  	height: 80vh;     /* fixed to 80% of viewport height */
-	text-align: center;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	border: 1px solid var(--circle-border);
+	padding: 1.4rem 1.6rem 1.6rem 1.6rem;
+	border-radius: 20px;
+	width: min(920px, 94vw);
+	height: min(86vh, 1100px);
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	overflow: hidden;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
 	font-family: var(--primary-font-family);
+	animation: modal-pop 0.25s ease;
 }
 
-.modal-content h1 {
-	font-size: 1.5rem;
-	margin-bottom: 0.9rem;
-	margin-top: 2rem;
+@keyframes modal-fade {
+	from {
+		opacity: 0;
+	}
 }
 
-.modal-content p {
-	font-size: 0.9rem;
-	margin-bottom: 1rem;
-	margin-top: 1rem;
+@keyframes modal-pop {
+	from {
+		opacity: 0;
+		transform: translateY(14px) scale(0.98);
+	}
 }
 
-.pdf-container {
-  width: 100%;
-  height: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow: hidden; /* or auto for scrolling */
-  margin-bottom: 10px;
+@media (prefers-reduced-motion: reduce) {
+	.modal-overlay,
+	.modal-content {
+		animation: none;
+	}
 }
 
-.pdf-container embed,
-.pdf-container object {
-  width: 100%;
-  height: 100%;
-  display: block;
-  overflow: auto;
-  overflow: hidden;
+/* Header: title left, actions right */
+.modal-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	flex-wrap: wrap;
+	padding-bottom: 0.9rem;
+	border-bottom: 1px solid var(--circle-border);
+}
+
+.modal-title {
+	margin: 0;
+	font-family: var(--secondary-font-family);
+	color: var(--special-text);
+	font-size: 1.4rem;
+}
+
+.modal-actions {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.modal-action {
+	display: inline-flex;
+	align-items: center;
+	gap: 7px;
+	padding: 8px 16px;
+	border-radius: 20px;
+	border: 1px solid var(--circle-border);
+	color: var(--text-color);
+	font-size: 0.85rem;
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.modal-action:hover {
+	background-color: var(--special-text);
+	color: var(--background-color);
+	border-color: var(--special-text);
+	text-decoration: none;
 }
 
 .modal-close-btn {
-	position: absolute;
-	top: 1rem;
-	right: 1rem;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	border: 1px solid var(--circle-border);
 	background: transparent;
-	border: none;
+	color: var(--text-color);
 	cursor: pointer;
-	color: white;
-	font-size: 1.5rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+	flex-shrink: 0;
 }
 
-.pdf-viewer {
+.modal-close-btn:hover {
+	background-color: var(--special-text);
+	color: var(--background-color);
+	border-color: var(--special-text);
+}
+
+.modal-action:focus-visible,
+.modal-close-btn:focus-visible {
+	outline: 2px solid var(--special-text);
+	outline-offset: 2px;
+}
+
+.modal-note {
+	margin: 0.8rem 0 1rem 0;
+	font-size: 0.85rem;
+	opacity: 0.85;
+}
+
+/* PDF preview */
+.pdf-container {
 	width: 100%;
-	height: 600px;
+	flex: 1 1 auto;
+	min-height: 0;
+	border-radius: 12px;
+	overflow: hidden;
+	border: 1px solid var(--circle-border);
 }
 
-.resume-modal {
+.pdf-container object,
+.pdf-container embed {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+/* Mobile / no-preview fallback card */
+.modal-mobile-open {
+	flex: 1 1 auto;
+	min-height: 180px;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	border: 1px dashed var(--circle-border);
+	border-radius: 12px;
+	color: var(--special-text);
+	text-align: center;
+	padding: 1.5rem;
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
-@media screen and (max-width: 800px) {
-	.modal-content {
-		padding: 2rem 1.2rem;
-		font-size: 0.95rem;
-		border-radius: 1rem;
-		width: 90vw;
-		max-height: 90vh;
-	}
+.modal-mobile-open:hover {
+	background-color: var(--special-text);
+	color: var(--background-color);
+	border-color: var(--special-text);
+	text-decoration: none;
+}
+
+.modal-mobile-open__title {
+	font-family: var(--secondary-font-family);
+	font-size: 1.1rem;
+}
+
+.modal-mobile-open__hint {
+	font-size: 0.78rem;
+	opacity: 0.75;
 }
 
 @media screen and (max-width: 600px) {
 	.modal-content {
-		padding: 2rem 1.2rem;
-		font-size: 0.95rem;
-		border-radius: 1rem;
-		width: 90vw;
-		max-height: 90vh;
-	}
-}
-
-
-
-@media screen and (max-width: 400px) {
-	.modal-content {
-		padding: 2rem 1.2rem;
-		font-size: 0.95rem;
-		border-radius: 1rem;
-		width: 90vw;
-		max-height: 70vh;
+		padding: 1.1rem 1rem 1.2rem 1rem;
+		height: min(88vh, 1100px);
 	}
 
-	.contact-row {
-  	  flex-direction: column;
-  	  gap: 0.75rem;
-  	}
-  	.resume-box {
-  	  text-align: left;
-  	}
-  	.resume-box::after {
-  	  display: none;
-  	}
+	.modal-title {
+		font-size: 1.15rem;
+	}
+
+	.modal-action span {
+		display: none; /* icon-only actions on small screens */
+	}
+
+	.modal-action {
+		padding: 8px 11px;
+	}
 }

@@ -195,11 +195,13 @@
 		margin: 0;
 	}
 
+	/* right-aligned for one-handed (right thumb) navigation */
 	.nav__menu-items a {
 		display: block;
 		margin: 0;
 		padding: 14px var(--content-pad);
 		font-size: 18px;
+		text-align: right;
 	}
 
 	/* staggered entrance of the menu items */
@@ -231,7 +233,7 @@
 
 	.buttons {
 		display: flex;
-		justify-content: flex-start;
+		justify-content: flex-end;
 		padding: 12px var(--content-pad) 0 var(--content-pad);
 	}
 

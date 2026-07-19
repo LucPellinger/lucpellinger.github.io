@@ -25,6 +25,16 @@ describe('Journey section', () => {
 		expect(screen.getByText(/4\.\s*Munich/)).toBeInTheDocument();
 	});
 
+	it('clicking a timeline number marks that station as the current step', () => {
+		render(<JourneySection />);
+		fireEvent.click(screen.getByRole('button', { name: 'Timeline' }));
+
+		const marker = screen.getByRole('button', { name: /center stop 2/i });
+		fireEvent.click(marker);
+
+		expect(marker.closest('li')).toHaveAttribute('aria-current', 'step');
+	});
+
 	it('every journey stop has globe coordinates', () => {
 		for (const stop of journeyStops) {
 			expect(typeof stop.lat, `${stop.place} lat`).toBe('number');
