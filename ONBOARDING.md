@@ -1,112 +1,206 @@
 # Onboarding (macOS)
 
-Everything needed to go from a fresh Mac to running this site locally.
-Estimated time: ~10 minutes.
+From zero to editing and deploying this site, with no googling required.
+Written so it still works if you come back to this in three years.
 
-## 1. Prerequisites
+**How to use this guide:** run every command in a code block, in order, and
+check the ✅ **Verify** line after each step before moving on. If a verify
+step fails, fix it (see [Troubleshooting](#troubleshooting)) before
+continuing — later steps depend on earlier ones.
 
-### Homebrew
+> ⚠️ **Pasting tip:** don't paste the `# comment` parts of commands — plain
+> zsh treats `#` as a literal argument and you'll get weird
+> `ls: #: No such file or directory` errors. (Or run
+> `setopt interactive_comments` first.)
 
-macOS package manager, used to install everything else:
+---
+
+## Fast path (machine already set up)
+
+If this machine has worked on this project before:
+
+```bash
+git clone https://github.com/lucpellinger/lucpellinger.github.io.git
+cd lucpellinger.github.io
+./scripts/setup.sh
+```
+
+Site runs at http://localhost:5173. To publish: see [Deploying](#deploying).
+That's it — everything below is for a fresh machine.
+
+---
+
+## Full setup (fresh Mac)
+
+### Step 1 — Homebrew
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-### Git
+The installer prints two `echo ... >> ~/.zprofile` commands at the end —
+**you must run those too**, then open a new terminal.
+
+✅ **Verify:** `brew --version` prints a version number.
+
+### Step 2 — Git
 
 ```bash
 brew install git
 ```
 
-### Node.js (via nvm)
+✅ **Verify:** `git --version` prints a version number.
 
-Use **nvm** rather than installing Node directly — it lets you switch Node
-versions per project without breaking other tools:
+### Step 3 — nvm (Node version manager)
+
+Three sub-steps. All three are required — installing the package alone is
+**not** enough, and the config does nothing until you reload the shell.
+
+**3a. Install the package:**
 
 ```bash
 brew install nvm
 mkdir -p ~/.nvm
 ```
 
-Add to `~/.zshrc`:
+**3b. Add nvm to your shell config.** Append this to `~/.zshrc`
+(e.g. `nano ~/.zshrc`, paste at the bottom, save):
 
 ```bash
 export NVM_DIR="$HOME/.nvm"
-[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"
+[ -s "$(brew --prefix nvm 2>/dev/null)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"
 ```
 
-Then restart your terminal and install a current LTS Node:
+**3c. Reload your shell** — `.zshrc` changes never apply to the terminal
+you're already in:
+
+```bash
+exec zsh
+```
+
+✅ **Verify:** `nvm --version` prints a version number. If you get
+`zsh: command not found: nvm`, one of 3a–3c was skipped — see
+[Troubleshooting](#troubleshooting).
+
+### Step 4 — Node.js
+
+Run this **inside the project folder** if you've already cloned it (nvm then
+reads the pinned version from `.nvmrc`), or use `--lts` otherwise:
+
+```bash
+nvm install    # inside the repo: installs the version pinned in .nvmrc
+nvm use
+```
+
+or, outside the repo:
 
 ```bash
 nvm install --lts
 nvm use --lts
-node -v   # should print v22.x or newer
 ```
 
-### Yarn 4 (via Corepack)
+✅ **Verify:** `node -v` prints a version, and `which node` points into
+`~/.nvm/versions/...` — **not** into `/opt/anaconda3` or `/usr/local`. If
+conda is shadowing node, run `conda config --set auto_activate_base false`
+and `exec zsh`.
 
-This project pins **Yarn 4** in `package.json` (`packageManager` field).
-Don't install Yarn globally with brew or npm — enable Corepack instead, which
-ships with Node and automatically uses the pinned version:
+### Step 5 — Yarn (via Corepack — do NOT `brew install yarn`)
+
+This project pins its exact Yarn version in `package.json`. Corepack (ships
+with Node) reads that pin automatically:
 
 ```bash
 corepack enable
 ```
 
-That's it. The first `yarn` command run inside the repo will fetch the exact
-pinned Yarn version.
+✅ **Verify:** `cd` into the project folder and run `yarn --version` — it
+prints a 4.x version. (Outside the project it may differ; that's fine.)
 
-## 2. Clone and run
+### Step 6 — Clone and run
 
 ```bash
 git clone https://github.com/lucpellinger/lucpellinger.github.io.git
 cd lucpellinger.github.io
-./scripts/setup.sh   # checks Node, enables Corepack, installs deps, starts dev server
+./scripts/setup.sh
 ```
 
-Or manually:
+The script re-checks steps 4–5, installs dependencies, and starts the dev
+server. Use `./scripts/setup.sh --no-dev` to set up without starting it.
 
-```bash
-yarn install
-yarn dev
-```
+✅ **Verify:** http://localhost:5173 shows the site. Edit any `.jsx`/`.css`
+file — the browser updates instantly.
 
-Open http://localhost:5173 — edits to any `.jsx`/`.css` file hot-reload
-instantly.
+---
 
-## 3. Everyday commands
+## Everyday commands
 
 | Command | Use |
 |---|---|
 | `yarn dev` | Local development with hot reload |
-| `yarn lint` | Check code style before committing |
+| `yarn lint` | Check code style (must pass before committing) |
 | `yarn build` | Production build → `dist/` |
-| `yarn preview` | Test the production build locally (do this before deploying) |
-| `yarn deploy` | Publish to GitHub Pages (`gh-pages` branch) |
+| `yarn preview` | Serve the production build locally — final check before deploying |
+| `yarn deploy` | Publish to GitHub Pages (see below) |
 
-## 4. Recommended workflow
+## Deploying
 
-1. Create a branch for the change: `git checkout -b feature/my-change`
-2. Develop with `yarn dev`, checking both desktop and mobile widths
-   (browser dev tools → device toolbar, ⌘⇧M in Chrome).
-3. Run `yarn lint` and `yarn build` before committing — the build must pass
-   cleanly since there's no CI or test suite to catch regressions.
-4. Merge to `main`, then `yarn deploy` when ready to publish.
+Deployment is **manual and separate from local dev** — running `yarn dev`
+publishes nothing. To put changes live on https://lucpellinger.eu:
 
-## 5. Troubleshooting
+```bash
+yarn lint
+yarn build
+yarn preview
+```
 
-**`yarn: command not found`** — run `corepack enable` again, and make sure
-you're using the nvm-managed Node (`which node` should point into `~/.nvm`).
+Check the preview URL it prints (production build, not the dev server). Then:
 
-**Wrong Yarn version / strange install errors** — delete nothing manually;
-just confirm Corepack is active: `corepack enable && yarn --version` should
-match the version pinned in `package.json`.
+```bash
+yarn deploy
+```
 
-**Site works locally but is broken after deploy** — check that `dist/CNAME`
-exists after `yarn build` (the `postbuild` script copies it). A missing CNAME
-detaches the custom domain. Also verify `base: "/"` is still set in
-`vite.config.js` — changing it breaks asset paths on lucpellinger.eu.
+This builds, copies the `CNAME` file (required for the custom domain), and
+pushes `dist/` to the `gh-pages` branch. GitHub Pages picks it up within a
+couple of minutes. Requirements: push access to the repo and git configured
+with your credentials — nothing else.
 
-**Port 5173 already in use** — `yarn dev --port 3000` or kill the other Vite
-process.
+✅ **Verify:** https://lucpellinger.eu shows your changes (hard-refresh with
+⌘⇧R to skip the browser cache).
+
+## Recommended workflow
+
+1. Branch: `git checkout -b feature/my-change`
+2. Develop with `yarn dev`; check desktop **and** mobile widths
+   (⌘⇧M in Chrome dev tools).
+3. `yarn lint && yarn build` must both pass — there's no CI or test suite
+   to catch mistakes.
+4. Merge to `main`, then `yarn deploy`.
+
+---
+
+## Troubleshooting
+
+**`zsh: command not found: nvm`** — in order of likelihood:
+1. Shell not reloaded after editing `~/.zshrc` → `exec zsh`.
+2. Package not actually installed → `brew list nvm` errors → `brew install nvm`.
+3. The source line in `~/.zshrc` points to a path that doesn't exist →
+   `ls "$(brew --prefix nvm)/nvm.sh"` must show a file. Use the
+   `brew --prefix` form from Step 3b, which works on both Apple Silicon
+   (`/opt/homebrew`) and Intel (`/usr/local`).
+
+**`yarn: command not found`** — run `corepack enable`, then `exec zsh`. Also
+confirm `which node` points into `~/.nvm` (Corepack belongs to that Node).
+
+**`node`/`npm` behave strangely, `which node` shows `/opt/anaconda3/...`** —
+conda's base env is shadowing nvm's Node:
+`conda config --set auto_activate_base false` then `exec zsh`.
+
+**Wrong Node version after 3 years away** — just run `nvm install && nvm use`
+inside the repo; `.nvmrc` pins the version this project expects.
+
+**Site works locally, broken after deploy** — check `dist/CNAME` exists after
+`yarn build` and that `base: "/"` is unchanged in `vite.config.js`. A missing
+CNAME detaches the lucpellinger.eu domain.
+
+**Port 5173 already in use** — `yarn dev --port 3000`, or kill the other
+Vite process.
