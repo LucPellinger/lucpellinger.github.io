@@ -11,8 +11,8 @@ const Portfolio = () => {
 			<h2 className='section__title'>My Project Portfolio</h2>
 			<div className='portfolio__grid'>
 				{portfolioItems.map((item, index) => (
-					<a href={item.url} onClick={() => window.open(item.url, '_blank')} className='portfolio__card-wrapper-link' target='_blank' rel='noopener noreferrer'>
-					<div className='portfolio__card-wrapper' key={index} style={{ '--i': index }}>
+					<a key={item.id} href={item.url} className='portfolio__card-wrapper-link' target='_blank' rel='noopener noreferrer'>
+					<div className='portfolio__card-wrapper' style={{ '--i': index }}>
 					{/* Using a div instead of an anchor tag for the card wrapper */}
 						{/* This allows for more flexibility in styling and interaction */}
 						<div className='portfolio__card'>

@@ -19,7 +19,7 @@ const Card = ({ icon, title, features }) => {
 };
 
 Card.propTypes = {
-	icon: PropTypes.element,
+	icon: PropTypes.elementType,
 	title: PropTypes.string.isRequired,
 	features: PropTypes.arrayOf(PropTypes.string),
 };

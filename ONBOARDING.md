@@ -138,33 +138,28 @@ file — the browser updates instantly.
 |---|---|
 | `yarn dev` | Local development with hot reload |
 | `yarn lint` | Check code style (must pass before committing) |
+| `yarn test` | Run the test suite once (`yarn test:watch` for watch mode) |
 | `yarn build` | Production build → `dist/` |
 | `yarn preview` | Serve the production build locally — final check before deploying |
-| `yarn deploy` | Publish to GitHub Pages (see below) |
+| `./scripts/release.sh` | Release: all checks + merge to main + push, CI deploys (see below) |
 
 ## Deploying
 
-Deployment is **manual and separate from local dev** — running `yarn dev`
-publishes nothing. To put changes live on https://lucpellinger.eu:
+One command does everything:
 
 ```bash
-yarn lint
-yarn build
-yarn preview
+./scripts/release.sh
 ```
 
-Check the preview URL it prints (production build, not the dev server). Then:
+It refuses to run with uncommitted changes, runs lint + tests + build
+locally, merges your branch into `main`, and pushes. GitHub Actions then
+re-runs all checks and publishes to GitHub Pages — the live site always
+matches a commit on `main` that passed CI. Watch progress at
+github.com/LucPellinger/lucpellinger.github.io/actions.
 
-```bash
-yarn deploy
-```
-
-This refuses to run if you have uncommitted changes (so the live site always
-matches a commit — deploy from a dirty tree once cost us a project's source),
-then builds, copies the `CNAME` file (required for the custom domain), and
-pushes `dist/` to the `gh-pages` branch. GitHub Pages picks it up within a
-couple of minutes. Requirements: push access to the repo and git configured
-with your credentials — nothing else.
+If CI is ever broken and you need an emergency deploy from your machine,
+`yarn deploy` still works (it also refuses a dirty tree — deploying
+uncommitted changes once cost us a project's source).
 
 ✅ **Verify:** https://lucpellinger.eu shows your changes (hard-refresh with
 ⌘⇧R to skip the browser cache).
@@ -174,9 +169,9 @@ with your credentials — nothing else.
 1. Branch: `git checkout -b feature/my-change`
 2. Develop with `yarn dev`; check desktop **and** mobile widths
    (⌘⇧M in Chrome dev tools).
-3. `yarn lint && yarn build` must both pass — there's no CI or test suite
-   to catch mistakes.
-4. Merge to `main`, then `yarn deploy`.
+3. `yarn lint && yarn test && yarn build` must all pass (CI enforces this
+   on every push, but catching it locally is faster).
+4. Run `./scripts/release.sh` — it merges to `main`, pushes, and CI deploys.
 
 ---
 

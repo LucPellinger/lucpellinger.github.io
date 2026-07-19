@@ -50,7 +50,10 @@ up Homebrew, nvm, Node, and Corepack from scratch.
 | `yarn build` | Production build into `dist/` (copies `CNAME` via `postbuild`) |
 | `yarn preview` | Serve the production build locally |
 | `yarn lint` | Run ESLint over the codebase |
-| `yarn deploy` | Build and publish `dist/` to the `gh-pages` branch |
+| `yarn test` | Run the test suite (Vitest) once |
+| `yarn test:watch` | Run tests in watch mode during development |
+| `./scripts/release.sh` | **Release**: run all checks, merge to main, push — CI deploys |
+| `yarn deploy` | Manual fallback deploy from your machine (avoid; use release.sh) |
 
 ## Project structure
 
@@ -82,15 +85,23 @@ markup.
 
 ## Deployment
 
-The site deploys to GitHub Pages under the custom domain `lucpellinger.eu`:
+Deploys are automated via GitHub Actions (`.github/workflows/ci.yml`):
+every push and PR runs lint + tests + build; pushes to `main` additionally
+publish `dist/` to the `gh-pages` branch, which serves `lucpellinger.eu`.
+
+To release:
 
 ```bash
-yarn deploy
+./scripts/release.sh
 ```
 
-This builds the site, copies `public/CNAME` into `dist/`, and pushes `dist/`
-to the `gh-pages` branch via the `gh-pages` package. The `CNAME` copy step is
-required — without it, the custom domain breaks on the next deploy.
+This verifies everything locally first (clean tree, lint, tests, build),
+merges your branch into `main`, and pushes — CI re-runs the checks and
+deploys. The live site therefore always matches a commit on `main` that
+passed all checks.
+
+`yarn deploy` still exists as a manual fallback (it refuses to run from a
+dirty working tree), but the normal path is `release.sh`.
 
 ## License
 

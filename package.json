@@ -9,6 +9,8 @@
     "build": "vite build",
     "postbuild": "cp public/CNAME dist/CNAME",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "preview": "vite preview",
     "predeploy": "./scripts/predeploy-check.sh && yarn run build && cp public/CNAME dist/CNAME",
     "deploy": "gh-pages -d dist -b gh-pages"
@@ -24,6 +26,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^8.57.1",
+    "@testing-library/dom": "^10.4.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
@@ -33,8 +38,10 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "gh-pages": "^6.3.0",
     "globals": "^15.15.0",
+    "jsdom": "^25.0.1",
     "vite": "^5.0.8",
-    "vite-plugin-pwa": "^1.3.0"
+    "vite-plugin-pwa": "^1.3.0",
+    "vitest": "^2.1.9"
   },
   "packageManager": "yarn@4.9.1+sha512.f95ce356460e05be48d66401c1ae64ef84d163dd689964962c6888a9810865e39097a5e9de748876c2e0bf89b232d583c33982773e9903ae7a76257270986538"
 }
