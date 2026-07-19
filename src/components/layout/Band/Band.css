@@ -1,0 +1,43 @@
+/* Full-bleed band layout (see Band.jsx). Layout variables
+   (--content-max, --content-pad, --band-pad-y) are defined in theme.css. */
+
+.band {
+	width: 100%;
+	padding: var(--band-pad-y) 0;
+	transition: background-color 0.3s ease;
+}
+
+.band__inner {
+	width: 100%;
+	max-width: var(--content-max);
+	margin: 0 auto;
+	padding-left: var(--content-pad);
+	padding-right: var(--content-pad);
+	box-sizing: border-box;
+}
+
+.band--alt {
+	background-color: var(--band-bg);
+}
+
+/* Solid background: blocks the fixed particle canvas behind it */
+.band--opaque {
+	background-color: var(--background-color);
+}
+
+/* Empty stage for the scroll-driven background animation */
+.band--interlude {
+	padding: 0;
+	height: clamp(320px, 55vh, 560px);
+}
+
+/* Hero band sits right under the fixed header */
+.band--hero {
+	padding-top: clamp(24px, 4vw, 56px);
+}
+
+@media (max-width: 767px) {
+	.band--interlude {
+		height: clamp(200px, 38vh, 340px);
+	}
+}

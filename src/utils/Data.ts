@@ -23,8 +23,86 @@ import OstImg from '../assets/Academics/ost.webp';
 import NovaImg from '../assets/Academics/novasbe.webp';
 import HkaImg from '../assets/Academics/hka.webp';
 
+import type { IconType } from 'react-icons';
 
-export const cards = [
+/* ---------- typed data models ---------- */
+
+export interface SkillCard {
+	icon: IconType;
+	title: string;
+	features: string[];
+}
+
+export interface Language {
+	label: string;
+	percent: number;
+}
+
+export interface Slide {
+	id: number;
+	title: string;
+	company: string;
+	description: string;
+	imgSrc: string;
+	imgAlt: string;
+	location: string;
+	date_from: string;
+	date_to: string;
+	total_months: number;
+	details: string;
+	categories: string[];
+}
+
+/** Role tabs in the portfolio filter are derived from these values. */
+export type RoleType =
+	| 'ML Engineering'
+	| 'Data Engineering'
+	| 'Analytics Engineering'
+	| 'Data Science'
+	| 'AI Engineering'
+	| 'Strategic Advisory'
+	| 'Web Development';
+
+export interface PortfolioItem {
+	id: number;
+	src: string;
+	alt: string;
+	title: string;
+	url: string;
+	categories: string[];
+	roleTypes: RoleType[];
+	stack: string[];
+}
+
+export interface AcademicItem {
+	id: number;
+	title: string;
+	subtitle: string;
+	location: string;
+	size: 'large' | 'medium' | 'small';
+	image: string;
+	link: string;
+	date_from: string;
+	date_to: string;
+}
+
+export interface JourneyStop {
+	id: number;
+	place: string;
+	region: string;
+	country: string;
+	note?: string;
+	current?: boolean;
+	/** Coordinates for the globe (decimal degrees). */
+	lat: number;
+	lon: number;
+	/** Story text shown in the globe tooltip and the timeline. */
+	chapter?: string;
+}
+
+/* ---------- data ---------- */
+
+export const cards: SkillCard[] = [
 	{
 		icon: RiStackLine,
 		title: 'Programming, Scripting and Data Management',
@@ -68,14 +146,14 @@ export const cards = [
 	},
 ];
 
-export const languages = [
+export const languages: Language[] = [
 	{ label: 'German [native]', percent: 100 },
 	{ label: 'English [fluent]', percent: 95 },
 	{ label: 'French [basic]', percent: 15 },
 	{ label: 'Portuguese [basic]', percent: 5 },
 ];
 
-export const slidesData = [
+export const slidesData: Slide[] = [
 	{
 		id: 1,
 		title: "Summer Internship AI Engineering",
@@ -143,7 +221,7 @@ export const slidesData = [
 ];
 
 
-export const portfolioItems = [
+export const portfolioItems: PortfolioItem[] = [
 	{
 		id: 1, 
 		src: FlightDataAnalysis, 
@@ -151,6 +229,8 @@ export const portfolioItems = [
 		title: 'Flight Data Analysis',
 		url: 'https://github.com/LucPellinger/Flight-Data-Analysis',
 		categories: ["Streamlit", "Folium & Pandas", "OpenAI API"],
+		roleTypes: ["Data Science", "AI Engineering"],
+		stack: ["Python", "Pandas", "OpenAI API"],
 	},
 	{ 	
 		id: 2,
@@ -159,6 +239,8 @@ export const portfolioItems = [
 		title: 'Personal Website',
 		url: 'https://github.com/LucPellinger/lucpellinger.github.io',
 		categories: ["React.js", "CSS", "Java Script"],
+		roleTypes: ["Web Development"],
+		stack: ["JavaScript", "React"],
 	},
 	{ 	
 		id: 3,
@@ -166,7 +248,9 @@ export const portfolioItems = [
 		alt: 'Blood Cells', 
 		title: 'Blood Cell Image Classification',
 		url: 'https://github.com/LucPellinger/BloodCell_Image_Classification',
-		categories: ["Tensorflow", "Gradio", "HuggingFace Spaces", "GCP"], 
+		categories: ["Tensorflow", "Gradio", "HuggingFace Spaces", "GCP"],
+		roleTypes: ["ML Engineering", "Data Science"],
+		stack: ["Python", "TensorFlow", "GCP"],
 	},
 	{ 	
 		id: 4,
@@ -175,6 +259,8 @@ export const portfolioItems = [
 		title: 'Wine Quality Prediction', 
 		url: 'https://github.com/LucPellinger/WineQuality_tabular_Classification/blob/main/VinifyTech.ipynb',
 		categories: ["Scikit-learn", "Pandas & Matplotlib", "Jupyter Notebook"],
+		roleTypes: ["Data Science"],
+		stack: ["Python", "Scikit-learn", "Pandas"],
 	},
 	{ 
 		id: 5,
@@ -183,6 +269,8 @@ export const portfolioItems = [
 		title: 'Time Series Classification', 
 		url: 'https://github.com/LucPellinger/Time-Series-Classification',
 		categories: ["PyTorch Lightning", "Polars", "Optuna"],
+		roleTypes: ["ML Engineering", "Data Science"],
+		stack: ["Python", "PyTorch"],
 	},
 	{ 
 		id: 6,
@@ -191,6 +279,8 @@ export const portfolioItems = [
 		title: 'Bitcoin Price Prediction', 
 		url: 'https://github.com/novatechclub/BTC-Price-Prediction',
 		categories: ["Pandas", "Scikit-Learn", "PyTorch Lightning"],
+		roleTypes: ["Data Science"],
+		stack: ["Python", "PyTorch", "Scikit-learn", "Pandas"],
 	},
 	{
 		id: 7,
@@ -199,6 +289,8 @@ export const portfolioItems = [
 		title: 'Data-Engineering-Challenge',
 		url: 'https://github.com/LucPellinger/data-engineering-challenge',
 		categories: ["Polars", "Docker", "PostgreSQL"],
+		roleTypes: ["Data Engineering"],
+		stack: ["Python", "SQL", "Docker"],
 	},
 	{
 		id: 8,
@@ -207,6 +299,8 @@ export const portfolioItems = [
 		title: 'Agentic AI for iiRDS Processing',
 		url: 'https://github.com/LucPellinger/sovereign-ai-assistant',
 		categories: ["LangChain", "Docker", "Ollama", "iiRDS-Standard"],
+		roleTypes: ["AI Engineering"],
+		stack: ["Python", "LangChain", "Docker"],
 	},
 	//{ 
 	//	id: 8,
@@ -219,7 +313,7 @@ export const portfolioItems = [
 ];
 
 
-export const academicData = [
+export const academicData: AcademicItem[] = [
   {
     id: 1,
     title: "M.Sc. Business Analytics",
@@ -252,5 +346,83 @@ export const academicData = [
     link: "https://www.ost.ch/en/",
 	date_from: "2021-09-01",
 	date_to: "2022-02-01",
+  },
+];
+export const journeyStops: JourneyStop[] = [
+  {
+    id: 1,
+    place: "Mittelhaardt",
+    region: "Weinstraße, Rhineland-Palatinate",
+    country: "DE",
+    note: "Where it all started",
+    lat: 49.35,
+    lon: 8.14,
+    chapter:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Growing up between vineyards — placeholder text, replace with the real chapter.",
+  },
+  {
+    id: 2,
+    place: "Karlsruhe",
+    region: "Baden-Württemberg",
+    country: "DE",
+    note: "B.Sc. at HKA",
+    lat: 49.01,
+    lon: 8.4,
+    chapter:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. B.Sc. International IT Business at HKA — placeholder text, replace with the real chapter.",
+  },
+  {
+    id: 3,
+    place: "Rapperswil-Jona",
+    region: "St. Gallen",
+    country: "CH",
+    note: "Exchange semester at OST",
+    lat: 47.23,
+    lon: 8.82,
+    chapter:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Exchange semester at OST — placeholder text, replace with the real chapter.",
+  },
+  {
+    id: 4,
+    place: "Munich",
+    region: "Bavaria",
+    country: "DE",
+    lat: 48.14,
+    lon: 11.58,
+    chapter:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Munich chapter (e.g. Deloitte) — placeholder text, replace with the real chapter.",
+  },
+  {
+    id: 5,
+    place: "Lisbon",
+    region: "Portugal",
+    country: "PT",
+    note: "M.Sc. at Nova SBE",
+    lat: 38.72,
+    lon: -9.14,
+    chapter:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. M.Sc. Business Analytics at Nova SBE — placeholder text, replace with the real chapter.",
+  },
+  {
+    id: 6,
+    place: "Porto",
+    region: "Portugal",
+    country: "PT",
+    lat: 41.15,
+    lon: -8.61,
+    chapter:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Porto chapter — placeholder text, replace with the real chapter.",
+  },
+  {
+    id: 7,
+    place: "Hamburg",
+    region: "Germany",
+    country: "DE",
+    note: "Current home base",
+    current: true,
+    lat: 53.55,
+    lon: 9.99,
+    chapter:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Hamburg, the current home base — placeholder text, replace with the real chapter.",
   },
 ];

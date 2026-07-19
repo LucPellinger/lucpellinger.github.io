@@ -20,7 +20,7 @@
   grid-gap: 20px;
   justify-content: center;
   align-items: stretch;
-  max-width: 1000px;
+  max-width: min(1300px, 100%);
   margin: auto;
   cursor: pointer;
 }

@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import { useRef, type CSSProperties } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+import type { Swiper as SwiperClass } from "swiper";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
@@ -9,12 +10,12 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
 export default function Slider() {
-  const swiperRef = useRef(null);
+  const swiperRef = useRef<SwiperClass | null>(null);
 
-  const formatDate = (dateStr) =>
+  const formatDate = (dateStr: string) =>
     new Date(dateStr).toLocaleString("default", { month: "long", year: "numeric" });
 
-  const handleSlideChange = (swiper) => {
+  const handleSlideChange = (swiper: SwiperClass) => {
     swiper.updateSlides();
     swiper.updateProgress();
     swiper.updateSize();
@@ -43,7 +44,6 @@ export default function Slider() {
             800: { slidesPerView: 1.4, spaceBetween: 40 },
             991: { slidesPerView: 1.5, spaceBetween: 50 },
           }}
-          slidesSizesGrid={[70, 80, 90, 100, 110]}
         >
           {slidesData.map((slide, index) => {
             return (
@@ -88,7 +88,7 @@ export default function Slider() {
                   <div className="slider__footer">
                     <div className="slider__categories">
                       {slide.categories.map((category, idx) => (
-                        <span key={idx} style={{ "--i": idx + 1 }}>
+                        <span key={idx} style={{ "--i": idx + 1 } as CSSProperties}>
                           {category}
                         </span>
                       ))}

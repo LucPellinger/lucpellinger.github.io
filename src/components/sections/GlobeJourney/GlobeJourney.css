@@ -1,0 +1,151 @@
+.globe-journey {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 18px;
+}
+
+.globe-journey__stage {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/* Shares the canvas's exact size so tooltip coordinates (computed in
+   canvas space) line up with the leader line drawn on the canvas */
+.globe-journey__canvas-box {
+	position: relative;
+	width: fit-content;
+}
+
+/* Tooltip card anchored to the active stop (positioned per-frame from JS) */
+.globe-journey__tooltip {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: min(230px, 44vw);
+	padding: 12px 14px;
+	border: 1px solid var(--circle-border);
+	border-radius: 10px;
+	background-color: var(--background-color);
+	background-color: color-mix(in srgb, var(--background-color) 86%, transparent);
+	backdrop-filter: blur(3px);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+	pointer-events: none;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	text-align: left;
+	z-index: 2;
+}
+
+.globe-journey__tooltip-title {
+	font-family: var(--secondary-font-family);
+	color: var(--special-text);
+	font-size: 1rem;
+	margin: 0;
+}
+
+.globe-journey__tooltip-region {
+	margin: 2px 0 0 0;
+	font-size: 0.72rem;
+	opacity: 0.8;
+}
+
+.globe-journey__tooltip-text {
+	margin: 8px 0 0 0;
+	font-size: 0.78rem;
+	line-height: 1.5;
+}
+
+.globe-journey__canvas {
+	display: block;
+	cursor: grab;
+	touch-action: none; /* drag rotates the globe instead of scrolling */
+	max-width: 100%;
+}
+
+.globe-journey__canvas:active {
+	cursor: grabbing;
+}
+
+/* Controls */
+
+.globe-journey__controls {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	width: 100%;
+	flex-wrap: wrap;
+}
+
+.globe-journey__chips {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 8px;
+}
+
+.globe-journey__chip {
+	font-family: inherit;
+	font-size: 13px;
+	padding: 5px 14px;
+	cursor: pointer;
+	border-radius: 20px;
+	background-color: transparent;
+	color: var(--text-color);
+	border: 1px solid var(--circle-border);
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.globe-journey__chip:hover {
+	border-color: var(--special-text);
+	color: var(--special-text);
+}
+
+.globe-journey__chip[aria-pressed='true'] {
+	background-color: var(--special-text);
+	color: var(--background-color);
+	border-color: var(--special-text);
+}
+
+.globe-journey__arrow {
+	font-family: inherit;
+	cursor: pointer;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	border: 1px solid var(--circle-border);
+	background: transparent;
+	color: var(--text-color);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 15px;
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+	flex-shrink: 0;
+}
+
+.globe-journey__arrow:hover {
+	background-color: var(--special-text);
+	color: var(--background-color);
+	border-color: var(--special-text);
+}
+
+.globe-journey__chip:focus-visible,
+.globe-journey__arrow:focus-visible {
+	outline: 2px solid var(--special-text);
+	outline-offset: 2px;
+}
+
+@media (max-width: 500px) {
+	.globe-journey__tooltip {
+		width: min(190px, 56vw);
+		padding: 10px 12px;
+	}
+
+	.globe-journey__tooltip-text {
+		font-size: 0.72rem;
+	}
+}

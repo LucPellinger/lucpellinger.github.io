@@ -1,82 +1,119 @@
-.home {
-	padding-top: 120px;
-}
-
-/* Hero Section Starts */
+/* Hero Section
+   Layout is fully fluid: no fixed pixel positions, no transform-scale hacks.
+   Left: intro text. Right: image + decorative arc + social rail. */
 
 .hero-section {
 	display: flex;
+	align-items: center;
 	justify-content: space-between;
-	position: relative;
+	gap: clamp(24px, 4vw, 72px);
 }
 
-
-.hero-section__left,
-.hero-section__right {
-	flex: 1;
-	margin-bottom: -140px;
+.hero-section__left {
+	flex: 1 1 440px;
+	max-width: 760px;
 }
 
 .hero-section__special-text {
-	font-size: 60px;
-	line-height: 140%;
+	font-size: clamp(42px, 5vw, 78px);
+	line-height: 130%;
+	margin: 0;
 	color: var(--special-text);
 	font-family: var(--secondary-font-family);
+	font-weight: bold;
 }
 
 .hero-section__paragraph {
-	padding: 20px 0;
-	line-height: 1.4;
+	padding: 20px 0 30px 0;
+	line-height: 1.5;
+	max-width: 60ch;
 }
 
-.hero-section__image {
+.hero-section__paragraph p {
+	font-size: clamp(16px, 1.2vw, 20px);
+	margin: 0;
+}
+
+/* Right side: portrait with an orbit arc; social links sit on the arc.
+   All geometry is percentage-based so it scales with the figure —
+   no hardcoded pixel positions. */
+.hero-section__right {
+	flex: 1 1 380px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.hero-section__figure {
 	position: relative;
+	width: clamp(240px, 24vw, 420px);
+	/* reserve room for the arc bulging out to the right */
+	margin-right: clamp(70px, 9vw, 160px);
+}
+
+.hero-section__figure img {
 	display: block;
+	position: relative;
+	width: 100%;
 	height: auto;
-	top: auto;
-	left: auto;
-	transform: scale(0.6) translateX(-30%) translateY(-20%);
-	/*z-index: -1;*/
+	z-index: 1; /* portrait covers the left part of the arc */
 }
 
-.hero-section__image img {
-	max-width: 100%;
-	max-height: 100%;
-}
-
-.hero-section__image-half-round-shape {
+/* The nav itself is the orbit: an ellipse whose right half is drawn by
+   its border. Links are children placed on the ellipse boundary. */
+.social-links {
 	position: absolute;
-	left: 60%;
-	bottom: 2%;
-	width: 400px;
-	height: 650px;
-	border-top-right-radius: 350px;
-	border-bottom-right-radius: 350px;
+	left: -2%;
+	top: 15%;
+	width: 138%;
+	height: 82%;
 	border: 1px solid var(--circle-border);
 	border-left: 0;
-	z-index: -1;
+	border-radius: 50%;
+	z-index: 0;
+	pointer-events: none; /* the ellipse box itself shouldn't catch clicks */
 }
 
-.social-links {
-	display: flex;
-	flex-wrap: nowrap;
-	z-index: 1;
-}
-
+/* Points on the ellipse: left = 50% + 50%*cos(θ), top = 50% − 50%*sin(θ) */
 .social-links a {
+	pointer-events: auto;
 	position: absolute;
-	width: 80px;
-	height: 80px;
-	border-radius: 100%;
-	border: 1px solid var(--special-text); 
+	transform: translate(-50%, -50%);
+	width: clamp(52px, 4.5vw, 76px);
+	height: clamp(52px, 4.5vw, 76px);
+	border-radius: 50%;
+	border: 1px solid var(--special-text);
 	color: var(--special-text);
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--nav-bg); /* var(--nav-bg) */
+	background-color: var(--nav-bg);
 	cursor: pointer;
 	transition: background-color 0.4s, color 0.4s;
-	font-size: 42px;
+	font-size: clamp(24px, 2.2vw, 38px);
+}
+
+.social-links a:nth-child(1) {
+	/* θ = 60° */
+	left: 75%;
+	top: 6.7%;
+}
+
+.social-links a:nth-child(2) {
+	/* θ = 32° */
+	left: 92.4%;
+	top: 23.5%;
+}
+
+.social-links a:nth-child(3) {
+	/* θ = 0° */
+	left: 100%;
+	top: 50%;
+}
+
+.social-links a img {
+	width: 62%;
+	height: 62%;
 }
 
 .social-links a:hover {
@@ -84,210 +121,41 @@
 	color: var(--background-color);
 }
 
-.social-links a:nth-child(1) {
-	left: 490px;
-	top: 110px;
-}
-
-.social-links a:nth-child(2) {
-	left: 615px;
-	top: 215px;
-}
-.social-links a:nth-child(3) {
-	left: 675px;
-	top: 365px;
-}
-.social-links a:nth-child(4) {
-	left: 655px;
-	top: 520px;
-}
-
-.video-link {
-	display: flex;
-	padding-top: 50px;
-	align-items: center;
-}
-
-.video-link span {
-	padding-left: 20px;
-}
-
-.link a {
-	width: 60px;
-	height: 60px;
-	border: 1px solid var(--special-text);
-	border-radius: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: var(--box-shadow);
-	animation: animate-ripple 3s infinite linear backwards;
-	color: inherit;
-}
-@keyframes animate-ripple {
-	50% {
-		box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
-	}
-	100% {
-		box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
-	}
-}
-
 /* responsive media query */
 
-@media (max-width: 991px) {
-	.home {
-		padding: 120px 50px 0 50px;
-	}
-
-	.hero-section {
-		display: flex;
-		justify-content: space-between;
-		position: relative;
-	}
-
-	.hero-section__left,
-	.hero-section__right {
-		flex: 1;
-		margin-bottom: -40px;
-	}
-
-	.hero-section__paragraph {
-		padding: 25px 0;
-		line-height: 1.4;
-	}
-
-	.hero-section__special-text {
-		font-size: 48px;
-		line-height: 140%;
-		color: var(--special-text);
-		font-family: var(--secondary-font-family);
-	}
-
-	.hero-section__image {
-		position: relative;
-		display: block;
-		height: auto;
-		top: auto;
-		left: auto;
-		width: 400px;
-		transform: scale(0.6) translateX(-10%) translateY(-20%);
-	}
-
-	.hero-section__image img {
-		max-width: 100%;
-		height: auto;
-	}
-
-	.hero-section__image-half-round-shape {
-		bottom: 2%;
-		left: 73%;
-		width: 258px;
-		height: 480px;
-	}
-
-	.social-links {
-		display: flex;
-		flex-wrap: nowrap;
-		z-index: 1;
-	}
-
-	.social-links a:nth-child(1) {
-		left: 385px;
-		top: 90px;
-	}
-
-	.social-links a:nth-child(2) {
-		left: 480px;
-		top: 180px;
-	}
-	.social-links a:nth-child(3) {
-		left: 515px;
-		top: 300px;
-	}
-	.social-links a:nth-child(4) {
-		left: 480px;
-		top: 420px;
-	}
-}
-
-@media screen and (max-width: 767px) {
+@media (max-width: 767px) {
 	.hero-section {
 		flex-direction: column;
+		align-items: flex-start;
 	}
 
-	.hero-section__image {
-		position: relative;
-		display: block;
-		height: auto;
-		top: auto;
-		left: auto;
-		width: 400px;
-		transform: scale(0.6) translateX(-30%) translateY(-10%);
-	}	
-
-	.hero-section__special-text {
-		font-size: 52px;
-	}
-}
-
-@media screen and (max-width: 500px) {
-	.home {
-		padding: 100px 20px 50px 20px;
+	.hero-section__left {
+		max-width: 100%;
 	}
 
-	.hero-section__special-text {
-		font-size: 42px;
+	.hero-section__right {
+		width: 100%;
+		justify-content: flex-start;
 	}
 
-	.hero-section__paragraph {
-		font-size: 16px;
-	}
-
-	.hero-section__image {
-		left: 30%;
-		width: 300px;
-		transform: scale(0.55) translateX(-107%);
-	}
-
-	.hero-section__image-half-round-shape {
-		bottom: 2%;
-		left: 55%;
-		width: 238px;
-		height: 380px;
+	.hero-section__figure {
+		width: min(58vw, 320px);
+		margin-right: 0;
 	}
 
 	.social-links a {
-		position: absolute;
-		width: 65px;
-		height: 65px;
-		border-radius: 100%;
-		border: 1px solid var(--special-text);
-		color: var(--special-text);
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		background-color: var(--nav-bg);
-		cursor: pointer;
-		transition: background-color 0.0s, color 0.0s;
-		font-size: 32px;
+		width: clamp(44px, 12vw, 56px);
+		height: clamp(44px, 12vw, 56px);
+		font-size: clamp(20px, 6vw, 28px);
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.hero-section__special-text {
+		font-size: 34px;
 	}
 
-	.social-links a:nth-child(1) {
-		left: 285px;
-		top: 55px;
-	}
-
-	.social-links a:nth-child(2) {
-		left: 350px;
-		top: 130px;
-	}
-	.social-links a:nth-child(3) {
-		left: 375px;
-		top: 225px;
-	}
-	.social-links a:nth-child(4) {
-		left: 340px;
-		top: 315px;
+	.hero-section__paragraph {
+		padding-bottom: 20px;
 	}
 }

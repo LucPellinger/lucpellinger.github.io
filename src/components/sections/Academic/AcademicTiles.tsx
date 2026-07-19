@@ -7,7 +7,7 @@ import { academicData } from '../../../utils/Data';
 
 
 export default function AcademicTiles() {
-  const formatDate = (dateStr) =>
+  const formatDate = (dateStr: string) =>
       new Date(dateStr).toLocaleString('default', { month: 'short', year: 'numeric' });
 
   return (

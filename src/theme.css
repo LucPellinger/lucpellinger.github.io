@@ -5,7 +5,14 @@
 
 /* Base Theme */
 :root {
+	/* Layout: full-bleed bands with a fluid inner content width */
+	--content-max: 1700px;
+	--content-pad: clamp(20px, 4.5vw, 90px);
+	--band-pad-y: clamp(48px, 6vw, 96px);
+
 	--background-color: #f8f9fa; /* #f8f9fa (white); #D8BFD8 (Thistle), #FFF0F5 (Lavender Blush);*/
+	/* translucent so the fixed particle canvas shows through (≈ #eef0f4 over the bg) */
+	--band-bg: rgba(30, 45, 70, 0.05);
 	--text-color: #333;
 	/*--primary-font-family: 'Poppins', sans-serif; */
 	/*--secondary-font-family: 'Cormorant Garamond', serif; */
@@ -18,11 +25,15 @@
 	--nav_button-bg: #9E7BB5;
 	--footer-hover-color: #fff; /* Color for footer icons */
 	--pagination-color: #1f1f1f;
+	--globe-land: #9E7BB5; /* globe land dots: purple in light theme */
+	--globe-active: #8b4cb5; /* selected journey stop marker (slider accent) */
 }
 
 /* Dark Theme */
 .dark-theme {
 	--background-color: #392A48; /* #2a2c39 (Blue Grey),  #392A48 (Matte Purple); #301934 (Dark Purple);*/
+	/* translucent so the fixed particle canvas shows through (≈ #322441 over the bg) */
+	--band-bg: rgba(20, 12, 35, 0.3);
 	--text-color: #D8BFD8; /* #858792 (Grey), #D8BFD8 (Thistle), */
 	--nav-bg: #252734; /* #252734 (Dark Blue Grey), #392A48 (Matte Purple); #301934 (Dark Purple);*/
 	--special-text: #fff; /* #fff (white), #D8BFD8 (Thistle), #FFF0F5 (Lavender Blush); #795F80 (Faded Purple); */
@@ -31,6 +42,8 @@
 	--nav_button-bg: #D8BFD8;
 	--footer-hover-color: #9E7BB5;
 	--pagination-color: var(--primary-clr);
+	--globe-land: #858792; /* grey to match other dark-theme components */
+	--globe-active: #8b4cb5; /* selected journey stop marker (slider accent) */
 }
 
 * {
@@ -51,9 +64,15 @@ body {
 	box-sizing: border-box;
 }
 
+/* Full-bleed band layout lives in components/layout/Band (Band.jsx/Band.css).
+   .container shares the same fluid content width (used by the header). */
 .container {
-	max-width: 1060px;
+	width: 100%;
+	max-width: var(--content-max);
 	margin: 0 auto;
+	padding-left: var(--content-pad);
+	padding-right: var(--content-pad);
+	box-sizing: border-box;
 }
 
 h1,
@@ -85,11 +104,7 @@ a:hover {
 }
 
 section {
-	margin: 0 auto;
-	margin-top: 30px;
-	margin-bottom: 30px;
-	margin-left: 8px;
-	margin-right: 8px;
+	margin: 0; /* vertical rhythm comes from .band padding */
 }
 
 /* Highlighting */
@@ -100,6 +115,8 @@ section {
 
 /* Button Styles */
 .button {
+	font-family: inherit;
+	font-size: inherit;
 	background-color: var(--nav-bg);
 	color: var(--text-color);
 	border: 1px solid var(--text-color); /* before #3b3d49 */
@@ -182,25 +199,26 @@ section {
 
 
 
+/* Small phones: keep the heading hierarchy monotonic (h1 > h2 > ... > h6) */
 @media screen and (max-width: 400px) {
 	h1 {
-		font-size: 1.2rem;
+		font-size: 1.6rem;
 	}
 
 	h2 {
-		font-size: 0.9rem;
+		font-size: 1.35rem;
 	}
 
 	h3 {
-		font-size: 0.8rem;
+		font-size: 1.15rem;
 	}
 
 	h4 {
-		font-size: 1.1rem;
+		font-size: 1.05rem;
 	}
 
 	h5 {
-		font-size: 1rem;
+		font-size: 0.95rem;
 	}
 
 	h6 {
@@ -208,6 +226,6 @@ section {
 	}
 
 	p {
-		font-size: 0.7rem;
+		font-size: 0.85rem;
 	}
 }

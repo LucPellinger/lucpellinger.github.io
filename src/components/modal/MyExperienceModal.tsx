@@ -1,18 +1,32 @@
-// components/modal/MyExperienceModal.jsx
+// components/modal/MyExperienceModal.tsx
 
 import React, { useEffect, useRef } from 'react';
 import { X } from 'lucide-react';
 import './MyExperienceModal.css';
 
-function MyExperienceModal({ experience, onClose }) {
-	const modalRef = useRef();
+export interface ExperienceModalData {
+	logo: string;
+	company: string;
+	role: string;
+	location: string;
+	period: string;
+	description: string;
+}
 
-	const handleClickOutside = (e) => {
+interface MyExperienceModalProps {
+	experience: ExperienceModalData | null;
+	onClose: () => void;
+}
+
+function MyExperienceModal({ experience, onClose }: MyExperienceModalProps) {
+	const modalRef = useRef<HTMLDivElement | null>(null);
+
+	const handleClickOutside = (e: React.MouseEvent) => {
 		if (modalRef.current === e.target) onClose();
 	};
 
 	useEffect(() => {
-		const handleEsc = (e) => {
+		const handleEsc = (e: KeyboardEvent) => {
 			if (e.key === 'Escape') onClose();
 		};
 		document.addEventListener('keydown', handleEsc);

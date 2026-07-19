@@ -1,6 +1,76 @@
 .portfolio {
 	width: 100%;
-	padding: 60px 0;
+}
+
+/* Filters */
+
+.portfolio__filters {
+	margin: 20px 0 30px 0;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.portfolio__filter-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.portfolio__filter-tab,
+.portfolio__filter-chip {
+	font-family: inherit;
+	cursor: pointer;
+	border-radius: 20px;
+	background-color: transparent;
+	color: var(--text-color);
+	border: 1px solid var(--circle-border);
+	transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.portfolio__filter-tab {
+	font-size: 16px;
+	padding: 8px 18px;
+}
+
+.portfolio__filter-chip {
+	font-size: 13px;
+	padding: 5px 14px;
+}
+
+.portfolio__filter-tab:hover,
+.portfolio__filter-chip:hover {
+	border-color: var(--special-text);
+	color: var(--special-text);
+}
+
+.portfolio__filter-tab[aria-pressed='true'],
+.portfolio__filter-chip[aria-pressed='true'] {
+	background-color: var(--special-text);
+	color: var(--background-color);
+	border-color: var(--special-text);
+}
+
+.portfolio__filter-tab:focus-visible,
+.portfolio__filter-chip:focus-visible {
+	outline: 2px solid var(--special-text);
+	outline-offset: 2px;
+}
+
+.portfolio__empty {
+	font-size: 18px;
+	padding: 30px 0;
+}
+
+.portfolio__clear {
+	font-family: inherit;
+	font-size: inherit;
+	cursor: pointer;
+	background: none;
+	border: none;
+	color: var(--special-text);
+	text-decoration: underline;
+	padding: 0;
 }
 
 .portfolio__grid {

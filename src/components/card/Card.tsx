@@ -1,8 +1,14 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import type { IconType } from 'react-icons';
 import './Card.css';
 
-const Card = ({ icon, title, features }) => {
+interface CardProps {
+	icon: IconType;
+	title: string;
+	features?: string[];
+}
+
+const Card = ({ icon, title, features }: CardProps) => {
 	return (
 		<div className='card'>
 			<div className='card__inner'>
@@ -16,12 +22,6 @@ const Card = ({ icon, title, features }) => {
 			</div>
 		</div>
 	);
-};
-
-Card.propTypes = {
-	icon: PropTypes.elementType,
-	title: PropTypes.string.isRequired,
-	features: PropTypes.arrayOf(PropTypes.string),
 };
 
 export default Card;

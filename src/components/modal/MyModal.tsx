@@ -4,12 +4,12 @@ import { FaLinkedin } from 'react-icons/fa';
 
 import './MyModal.css';
 
-function MyModal({ onClose }) {
-    const modalRef = useRef();
+function MyModal({ onClose }: { onClose: () => void }) {
+    const modalRef = useRef<HTMLDivElement | null>(null);
     const isMobile = window.innerWidth < 400;
 
     // Close on background click
-    const handleClickOutside = (e) => {
+    const handleClickOutside = (e: React.MouseEvent) => {
         if (modalRef.current === e.target) {
             onClose();
         }
@@ -17,7 +17,7 @@ function MyModal({ onClose }) {
 
     // Optional: Close on ESC key press
     useEffect(() => {
-        const handleEsc = (e) => {
+        const handleEsc = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 onClose();
             }
