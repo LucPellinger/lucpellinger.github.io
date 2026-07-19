@@ -1,12 +1,88 @@
-# React + Vite
+# lucpellinger.eu — Personal Website & Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+My personal website and online CV, live at **[lucpellinger.eu](https://lucpellinger.eu/)**.
 
-Currently, two official plugins are available:
+A fast, responsive single-page site built with React and Vite, presenting my
+experience, education, skills, and selected projects. Includes a light/dark
+theme, interactive experience modals, and a downloadable résumé.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech stack
 
-## Expanding the ESLint configuration
+| Layer | Choice |
+|---|---|
+| UI | [React 18](https://react.dev/) |
+| Build tool / dev server | [Vite 5](https://vite.dev/) |
+| Package manager | [Yarn 4](https://yarnpkg.com/) (Corepack) |
+| Styling | Plain CSS, one co-located `.css` file per component (flexbox/grid) |
+| Animation | [Motion](https://motion.dev/) |
+| Icons | lucide-react, react-icons |
+| Carousel | Swiper |
+| Hosting | GitHub Pages + custom domain (`CNAME`) |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+No CSS framework, no state-management library, no test suite (yet) — the site
+is intentionally small and low-maintenance.
+
+## Getting started
+
+```bash
+yarn install   # install dependencies
+yarn dev       # start dev server at http://localhost:5173
+```
+
+New machine? See **[ONBOARDING.md](./ONBOARDING.md)** for setting up Node,
+Corepack, and Yarn from scratch.
+
+## Scripts
+
+| Command | What it does |
+|---|---|
+| `yarn dev` | Start the Vite dev server with hot reload |
+| `yarn build` | Production build into `dist/` (copies `CNAME` via `postbuild`) |
+| `yarn preview` | Serve the production build locally |
+| `yarn lint` | Run ESLint over the codebase |
+| `yarn deploy` | Build and publish `dist/` to the `gh-pages` branch |
+
+## Project structure
+
+```
+src/
+├── App.jsx               # Root component: theme provider, modals, layout
+├── main.jsx              # Entry point
+├── theme.css             # Global theme variables (light/dark)
+├── pages/
+│   └── Home.jsx          # Composes all page sections
+├── components/
+│   ├── header/           # Top navigation
+│   ├── footer/           # Footer
+│   ├── contact/          # Contact section
+│   ├── card/             # Reusable card
+│   ├── modal/            # CV + experience detail modals
+│   ├── slider/           # Swiper-based slider
+│   ├── switch/           # Theme toggle
+│   └── sections/         # Page sections: Hero, Academic, Portfolio, Skills
+├── context/              # ThemeContext + useTheme hook
+├── utils/                # Content data (Data.js, ExperienceData.js)
+└── assets/               # Images, organized per section
+```
+
+**Convention:** every component lives in its own folder with a `.jsx` file and
+a co-located `.css` file imported by that component. Content (experience
+entries, cards, languages) is kept as plain data in `src/utils/`, separate from
+markup.
+
+## Deployment
+
+The site deploys to GitHub Pages under the custom domain `lucpellinger.eu`:
+
+```bash
+yarn deploy
+```
+
+This builds the site, copies `public/CNAME` into `dist/`, and pushes `dist/`
+to the `gh-pages` branch via the `gh-pages` package. The `CNAME` copy step is
+required — without it, the custom domain breaks on the next deploy.
+
+## License
+
+Personal project — content and design © Luc Pellinger. Feel free to browse the
+code for inspiration, but please don't republish the content as your own.

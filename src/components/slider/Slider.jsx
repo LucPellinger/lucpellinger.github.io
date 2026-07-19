@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
 import "swiper/css";
@@ -9,14 +9,12 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
 
 export default function Slider() {
-  const [activeIndex, setActiveIndex] = useState(0);
   const swiperRef = useRef(null);
 
   const formatDate = (dateStr) =>
     new Date(dateStr).toLocaleString("default", { month: "long", year: "numeric" });
 
   const handleSlideChange = (swiper) => {
-    setActiveIndex(swiper.activeIndex);
     swiper.updateSlides();
     swiper.updateProgress();
     swiper.updateSize();
@@ -48,7 +46,6 @@ export default function Slider() {
           slidesSizesGrid={[70, 80, 90, 100, 110]}
         >
           {slidesData.map((slide, index) => {
-            const width = activeIndex === index ? "90" : "70";
             return (
               <SwiperSlide
                 key={index}

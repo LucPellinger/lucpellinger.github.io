@@ -22,12 +22,12 @@ const Portfolio = () => {
 							
 							<div className='portfolio__card-title'><h3>{item.title}</h3></div>
 							<div className="portfolio__categories">
-                            	    {item.categories.map((category, idx) => (
-                            	        <span key={idx} style={{"--i": idx + 1}}>
-                            	            {category}
-                            	        </span>
-                            	    ))}
-                            </div>
+								{item.categories.map((category, idx) => (
+									<span key={idx} style={{"--i": idx + 1}}>
+										{category}
+									</span>
+								))}
+							</div>
 
 							</div>
 						</div>

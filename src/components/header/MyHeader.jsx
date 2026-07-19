@@ -6,7 +6,7 @@ import { useState } from 'react';
 import MyModal from '../modal/MyModal';
 import Logo from '../../assets/header/Logo_new.png';
 
-const MyHeader = ( { onResumeClick }) => {
+const MyHeader = () => {
 	const { isDarkTheme, toggleTheme } = useTheme();
 	const [isMobileMenuOpen, setISMobileMenuOpen] = useState(false);
 
@@ -19,7 +19,7 @@ const MyHeader = ( { onResumeClick }) => {
 			<div className='nav__wrapper container'>
 				<div className='nav__logo' onClick={() => { window.location.href = '/'; }}>
 					<img src={Logo} alt='Logo' className='nav__logo-image' />
-  					<span className='nav__logo-text'>Luc Marcel Pellinger</span>
+					<span className='nav__logo-text'>Luc Marcel Pellinger</span>
 				</div>
 				<ul className={`nav__menu ${isMobileMenuOpen ? 'mobile-menu' : ''}`}>
 					<li className='nav__menu-items'>

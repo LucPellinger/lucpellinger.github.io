@@ -1,11 +1,9 @@
-///import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MyHeader from './components/header/MyHeader';
 import { ThemeProvider } from './context/ThemeContext';
 import Home from './pages/Home';
 import MyModal from './components/modal/MyModal';
 import { useState } from 'react';
-import { experiences } from './utils/experienceData.js';
-import MyExperienceModal from './components/modal/MyExperienceModal'; 
+import MyExperienceModal from './components/modal/MyExperienceModal';
 import Footer from './components/footer/Footer';
 
 function App() {

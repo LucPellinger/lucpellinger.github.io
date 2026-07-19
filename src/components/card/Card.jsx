@@ -1,5 +1,4 @@
 import React from 'react';
-import { v4 as uuid } from 'uuid';
 import PropTypes from 'prop-types';
 import './Card.css';
 
@@ -11,7 +10,7 @@ const Card = ({ icon, title, features }) => {
 				<div className='card__title'>{title}</div>
 				<div className='card__features'>
 					{features?.map((feature) => (
-						<p key={uuid()}>{feature}</p>
+						<p key={feature}>{feature}</p>
 					))}
 				</div>
 			</div>

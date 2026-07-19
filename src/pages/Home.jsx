@@ -1,8 +1,7 @@
 
 import React from 'react';
 import './Home.css';
-import { v4 as uuid } from 'uuid';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 import { register } from 'swiper/element/bundle';
 import { cards, languages } from '../utils/Data';
 import { FaChevronDown } from 'react-icons/fa';
@@ -13,14 +12,10 @@ import AcademicTiles from '../components/sections/Academic/AcademicTiles';
 import Contact from '../components/contact/Contact';
 import Card from '../components/card/Card';
 
-import GoogleGeminiEffect from "../components/gemini_effect/geminiEffect";
-import GoogleGeminiEffectDemo from "../components/gemini_effect/GoogleGeminiEffectDemo";
 
-
-const Home = ( { onResumeClick, onExperienceClick } ) => {
+const Home = ({ onResumeClick }) => {
 	const skillRef = useRef(null);
 	const swiperRef = useRef(null);
-	const [showModal, setShowModal] = useState(false);
 
 
 	useEffect(() => {
@@ -79,15 +74,13 @@ const Home = ( { onResumeClick, onExperienceClick } ) => {
 			<Hero onResumeClick={onResumeClick} />
 
 			<div className='hero-section__scroll-down'>
-			  <div className='tooltip'>
-			    <a href='#portfolio' className='scroll-down-link'>
-			      <FaChevronDown />
-			    </a>
-			    <span className='tooltip-text'>Scroll to Portfolio</span>
-			  </div>
+				<div className='tooltip'>
+					<a href='#portfolio' className='scroll-down-link'>
+						<FaChevronDown />
+					</a>
+					<span className='tooltip-text'>Scroll to Portfolio</span>
+				</div>
 			</div>
-
-			{/*<GoogleGeminiEffectDemo />*/}
 
 			<Portfolio />
 			
@@ -113,7 +106,7 @@ const Home = ( { onResumeClick, onExperienceClick } ) => {
 				<div className='cards'>
 					{cards?.map((card) => (
 						<Card
-							key={uuid()}
+							key={card?.title}
 							icon={card?.icon}
 							title={card?.title}
 							features={card?.features}
@@ -124,25 +117,25 @@ const Home = ( { onResumeClick, onExperienceClick } ) => {
 
 
 
-		    <section className='skill' id='languageskills' ref={skillRef}>
-		      <div className='skill__left'>
-		        <h2 className='section__title'>My Language Skills</h2>
-		        <a href='/Resume_LucPellinger.pdf' download className='button'>
-		          Get Resume
-		        </a>
-		      </div>
-		      <div className='skill__right'>
-		        {languages.map(({ label, percent }) => (
-		          <div className='skill__wrapper' key={label}>
-		            <div className='skill__tag'>{label}</div>
-		            <div className='skill__box'>
-		              <div className='skill__progress-line' data-width={percent}></div>
-		              <div className='skill__percentage'>{percent}%</div>
-		            </div>
-		          </div>
-		        ))}
-		      </div>
-		    </section>
+				<section className='skill' id='languageskills' ref={skillRef}>
+					<div className='skill__left'>
+						<h2 className='section__title'>My Language Skills</h2>
+						<a href='/Resume_LucPellinger.pdf' download className='button'>
+							Get Resume
+						</a>
+					</div>
+					<div className='skill__right'>
+						{languages.map(({ label, percent }) => (
+							<div className='skill__wrapper' key={label}>
+								<div className='skill__tag'>{label}</div>
+								<div className='skill__box'>
+									<div className='skill__progress-line' data-width={percent}></div>
+									<div className='skill__percentage'>{percent}%</div>
+								</div>
+							</div>
+						))}
+					</div>
+				</section>
 
 			{/*<div className='contact' id='contact'>
 				<h3 className='section__label'>Contact</h3>

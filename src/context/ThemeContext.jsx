@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 
+// eslint-disable-next-line react-refresh/only-export-components -- context and provider are intentionally co-located
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {

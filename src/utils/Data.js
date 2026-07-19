@@ -68,11 +68,11 @@ export const cards = [
 ];
 
 export const languages = [
-  	  	{ label: 'German [native]', percent: 100 },
-  	  	{ label: 'English [fluent]', percent: 95 },
-  	  	{ label: 'French [basic]', percent: 15 },
-  	  	{ label: 'Portuguese [basic]', percent: 5 },
-  	];
+	{ label: 'German [native]', percent: 100 },
+	{ label: 'English [fluent]', percent: 95 },
+	{ label: 'French [basic]', percent: 15 },
+	{ label: 'Portuguese [basic]', percent: 5 },
+];
 
 export const slidesData = [
 	{
