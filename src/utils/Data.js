@@ -205,8 +205,7 @@ export const portfolioItems = [
 		src: IiRDS,
 		alt: 'Sovereign-AI-Assistant',
 		title: 'Agentic AI for iiRDS Processing',
-		// TODO: recovered URL pointed at data-engineering-challenge (likely placeholder) — replace with correct repo
-		url: 'https://github.com/LucPellinger/data-engineering-challenge',
+		url: 'https://github.com/LucPellinger/sovereign-ai-assistant',
 		categories: ["LangChain", "Docker", "Ollama", "iiRDS-Standard"],
 	},
 	//{ 
