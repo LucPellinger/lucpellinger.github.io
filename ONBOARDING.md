@@ -62,6 +62,12 @@ pinned Yarn version.
 ```bash
 git clone https://github.com/lucpellinger/lucpellinger.github.io.git
 cd lucpellinger.github.io
+./scripts/setup.sh   # checks Node, enables Corepack, installs deps, starts dev server
+```
+
+Or manually:
+
+```bash
 yarn install
 yarn dev
 ```

@@ -24,13 +24,23 @@ is intentionally small and low-maintenance.
 
 ## Getting started
 
+One command from fresh clone to running dev server:
+
 ```bash
-yarn install   # install dependencies
-yarn dev       # start dev server at http://localhost:5173
+./scripts/setup.sh
 ```
 
-New machine? See **[ONBOARDING.md](./ONBOARDING.md)** for setting up Node,
-Corepack, and Yarn from scratch.
+This checks Node (`.nvmrc` pins v22), enables Corepack/Yarn, installs
+dependencies, and starts the dev server at http://localhost:5173.
+Use `--no-dev` to set up without starting the server. Or do it manually:
+
+```bash
+yarn install   # install dependencies
+yarn dev       # start dev server
+```
+
+New machine without Node? See **[ONBOARDING.md](./ONBOARDING.md)** for setting
+up Homebrew, nvm, Node, and Corepack from scratch.
 
 ## Scripts
 
