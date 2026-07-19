@@ -164,14 +164,35 @@ uncommitted changes once cost us a project's source).
 ✅ **Verify:** https://lucpellinger.eu shows your changes (hard-refresh with
 ⌘⇧R to skip the browser cache).
 
-## Recommended workflow
+## Development guidelines
 
-1. Branch: `git checkout -b feature/my-change`
-2. Develop with `yarn dev`; check desktop **and** mobile widths
-   (⌘⇧M in Chrome dev tools).
-3. `yarn lint && yarn test && yarn build` must all pass (CI enforces this
-   on every push, but catching it locally is faster).
-4. Run `./scripts/release.sh` — it merges to `main`, pushes, and CI deploys.
+**Branching.** Never commit directly to `main` — every push to `main`
+triggers a deploy to the live site, so `main` must always be releasable.
+All work happens on short-lived branches cut from `main`, named by intent:
+`feature/<what>` for new content or functionality, `fix/<what>` for bug
+fixes, `docs/<what>` for documentation-only changes (e.g.
+`feature/add-thesis-project`, `fix/mobile-nav-overlap`). One branch per
+logical change; don't let branches live for weeks — the longer they drift
+from `main`, the messier the merge.
+
+**Commits.** Write the summary line in imperative mood ("Add iiRDS project
+card", not "Added" or "Adding"), keep it under ~72 characters, and make each
+commit one logical change — if the summary needs the word "and", it's
+probably two commits. When the *why* isn't obvious from the diff, add a body
+explaining it (the "Restore iiRDS project recovered from gh-pages" commit is
+a good example — the diff alone would be baffling without the story).
+Commit everything that belongs to the change, including new images: assets
+that exist only in your working folder are exactly how the site once ended
+up serving a project that no source control knew about.
+
+**Merging & releasing.** Don't merge manually — run `./scripts/release.sh`
+from your branch. It verifies the tree is clean, runs lint + tests + build,
+merges into `main`, pushes, and CI deploys. Before releasing, check the
+change with `yarn dev` at desktop **and** mobile widths (⌘⇧M in Chrome dev
+tools); `yarn lint && yarn test && yarn build` must pass locally (CI
+enforces this anyway, but local feedback is faster). After a release,
+delete the merged branch (`git branch -d feature/<what>`) to keep the
+branch list meaningful.
 
 ---
 
