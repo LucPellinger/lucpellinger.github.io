@@ -10,7 +10,7 @@
     "postbuild": "cp public/CNAME dist/CNAME",
     "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "predeploy": "yarn run build && cp public/CNAME dist/CNAME",
+    "predeploy": "./scripts/predeploy-check.sh && yarn run build && cp public/CNAME dist/CNAME",
     "deploy": "gh-pages -d dist -b gh-pages"
   },
   "dependencies": {

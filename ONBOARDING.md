@@ -159,7 +159,9 @@ Check the preview URL it prints (production build, not the dev server). Then:
 yarn deploy
 ```
 
-This builds, copies the `CNAME` file (required for the custom domain), and
+This refuses to run if you have uncommitted changes (so the live site always
+matches a commit — deploy from a dirty tree once cost us a project's source),
+then builds, copies the `CNAME` file (required for the custom domain), and
 pushes `dist/` to the `gh-pages` branch. GitHub Pages picks it up within a
 couple of minutes. Requirements: push access to the repo and git configured
 with your credentials — nothing else.
