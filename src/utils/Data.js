@@ -10,6 +10,7 @@ import compTSC from '../assets/Portfolio/thesis_time_series.webp';
 import BloodCells from '../assets/Portfolio/BloodCells.webp';
 import RAGTest from '../assets/Portfolio/RAGTest.webp';
 import DataEngineeringChallenge from '../assets/Portfolio/DataEngineeringChallenge_v2.webp';
+import IiRDS from '../assets/Portfolio/iiRDS.webp';
 
 // experience section images
 import PorscheImage_v1 from '../assets/Experience/porsche_v1.webp';
@@ -191,13 +192,22 @@ export const portfolioItems = [
 		url: 'https://github.com/novatechclub/BTC-Price-Prediction',
 		categories: ["Pandas", "Scikit-Learn", "PyTorch Lightning"],
 	},
-	{ 
+	{
 		id: 7,
-		src: DataEngineeringChallenge, 
-		alt: 'Data-Engineering-Challenge', 
-		title: 'Data-Engineering-Challenge', 
+		src: DataEngineeringChallenge,
+		alt: 'Data-Engineering-Challenge',
+		title: 'Data-Engineering-Challenge',
 		url: 'https://github.com/LucPellinger/data-engineering-challenge',
 		categories: ["Polars", "Docker", "PostgreSQL"],
+	},
+	{
+		id: 8,
+		src: IiRDS,
+		alt: 'Sovereign-AI-Assistant',
+		title: 'Agentic AI for iiRDS Processing',
+		// TODO: recovered URL pointed at data-engineering-challenge (likely placeholder) — replace with correct repo
+		url: 'https://github.com/LucPellinger/data-engineering-challenge',
+		categories: ["LangChain", "Docker", "Ollama", "iiRDS-Standard"],
 	},
 	//{ 
 	//	id: 8,
