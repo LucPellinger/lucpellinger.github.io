@@ -25,16 +25,19 @@ fi
 branch=$(git branch --show-current)
 echo "→ Releasing from branch: $branch"
 
-echo "→ [1/4] Checking working tree..."
+echo "→ [1/5] Checking working tree..."
 ./scripts/predeploy-check.sh
 
-echo "→ [2/4] Running checks locally (lint, test, build)..."
+echo "→ [2/5] Syncing dependencies..."
+run_yarn install --immutable
+
+echo "→ [3/5] Running checks locally (lint, test, build)..."
 run_yarn lint
 run_yarn test
 run_yarn build
 echo "✓ All local checks passed"
 
-echo "→ [3/4] Updating main..."
+echo "→ [4/5] Updating main..."
 git fetch origin
 if [[ "$branch" != "main" ]]; then
   git checkout main
@@ -48,7 +51,7 @@ else
   git pull --rebase origin main
 fi
 
-echo "→ [4/4] Pushing main (CI will verify again and deploy)..."
+echo "→ [5/5] Pushing main (CI will verify again and deploy)..."
 git push origin main
 
 if [[ "$branch" != "main" ]]; then
